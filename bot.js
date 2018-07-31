@@ -11,7 +11,7 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Bot By TEAM ArabSupport ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(` FoxBot Back is here `,"http://twitch.tv/S-F")
+client.user.setGame(` Bot By TEAM FoxBot `,"http://twitch.tv/S-F")
 client.user.setStatus("dnd")
 });
 
@@ -34,7 +34,75 @@ client.user.setStatus("dnd")
    message.channel.sendEmbed(embed)
     
    }
+   });
+client.on("message", message => {
+	var prefix = "-";
+ if (message.content === "-help-3") {
+	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+			  اوامر عامة
+❖-allbots ~ لعرض جميع البوتات الي بالسيرفر
+❖-server ~يعرض لك معلومات عن السيرفر
+❖-bot ~ يعرض لك كل معلومات البوت
+❖-skin <name> ~ يعرض لك سكنك بماين كرافت
+❖-count ~ يعرض لك عدد الاشخاص بالسيرفر بدون بوتات
+❖-invites ~ يعرض لك  عدد انفايتاتك بالسيرفر 
+❖-invite-codes ~ يعرض لك روابط الانفايتات حكك في السيرفر 
+❖-cal ~ اله حاسبة
+❖-trans <language> <any thing> ~ يترجم لك الي تبيه من اي لغة
+❖-short ~ يختصر لك رابط كبير الى رابط صغير
+❖-tag ~ يكتب لك الكلمة بشكل جميل وكبير
+❖-google ~ للبحث في قوقل عن طريق الدسكورد
+❖-perms ~ يعرض لك برمشناتك بالسيرفر
+❖-za5 ~ يزخرف لك كلمة او جملة
+❖-rooms ~ يعرض لك كل الرومات الي بالسيرفر مع عددها
+❖-roles ~ يعرض لك كل الرانكات بالسيرفر بشكل جميل
+❖-emojilist ~ يعرض لك كل الايموجيات الي بالسيرفر
+❖-say ~ يكرر الكلام الي تكتبو
+❖-image ~ صورة السيرفر
+❖-members ~ يعرض لك عدد كل حالات الاشخاص وعدد البوتات وعدد الاشخاص
+❖-id ~ معلومات عنك
+❖-bans ~ عدد الاشخاص المبندة 
+❖-avatar ~ صورتك او صورة الي تمنشنو
+❖-embed ~ يكرر الي تقولو بشكل حلو
+❖-emoji <any things> ~ لتحويل اي كلمه تقولها الي ايموجي
+❖-inv ~ لدعوة البوت الى سيرفرك
+❖-support ~ سيرفر الدعم
+❖-contact ~ ارسال اقتراح او لمراسلة صاحب البوت
+`)
+   message.author.sendEmbed(embed)
+    
+   }
    }); 
+   
+
+   client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help-1") {
+	  message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
+  const embed = new Discord.RichEmbed() 
+      .setColor("#000000")
+      .setDescription(`
+          اوامر الالعاب
+❖-rps ~ حجر ورقة مقص
+❖-speed ~ اسرع كتابة
+❖-quas ~ اسئلة عامة
+❖-نكت ~ نكت 
+❖-لعبة فكك ~ فكك
+❖-عواصم عشوائية ~ عواصم
+❖-لعبة كت تويت ~ كت تويت
+❖-roll <number> ~ قرعة
+❖-لو خيروك بطريقة حلوة ~ لو خيروك
+❖-لعبة مريم ~ مريم
+❖-فوائد ونصائح  ~ هل تعلم
+❖-يعطيك عقابات قاسية ~ عقاب   `)
+   message.author.sendEmbed(embed)
+    
+   }
+   }); 
+   
   client.on("message", message => {
 	var prefix = "$";
  if (message.content === "$help-2") {
