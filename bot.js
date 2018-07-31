@@ -1009,4 +1009,4 @@ client.on('ready', () => {
             }
 });
 
-client.login('NDY5NDAzNjMxNjI0Mzg4NjE4.DjHNwA.6oUmTaOddidYpLZsGELc-tmP-kE');
+client.login('NDYwNzk3MTEzNjQzNjk2MTI5.DkHZmg.L3L-lq44ROuc6ni7tzkjXhIjoNc');
