@@ -114,10 +114,8 @@ client.on("message", message => {
 			 
 ─═════════ {✯FoxBot✯} ════════════─
 ❧ $help-js ➺ ⦁ قائمة أكواد الجافا سكربت ⦁
-‎
-❧ $help-py ➺ ⦁ قائمة أكواد البايثون ⦁
 
-‎
+❧ $help-py ➺ ⦁ قائمة أكواد البايثون ⦁
 ─═════════ {✯FoxBot✯} ════════════─
 	  `)
    message.channel.sendEmbed(embed)
@@ -141,7 +139,7 @@ client.on("message", message => {
 ❧ $help-js-source-3 ➺ ⦁ قسم السورس الأساسي ⦁
 
 ❧ $help-js-welcome ➺ ⦁ قسم أكواد الترحيب ⦁
-‎
+
 ❧ $help-js-bc ➺ ⦁ قسم أكواد البرودكاست ⦁
 ─═════════ {✯FoxBot✯} ════════════─
 	  `)
@@ -159,11 +157,11 @@ client.on("message", message => {
 	         Please Chose: 
 			 
 ─═════════ {✯FoxBot✯} ════════════─
-‎
+
 ❧ Soon ⦁ 
-‎
+
 ❧ Soon ⦁ 
-‎
+
 ❧ Soon ⦁
 ─═════════ {✯FoxBot✯} ════════════─
 	  `)
@@ -171,7 +169,7 @@ client.on("message", message => {
     
    }
    }); 
-‎
+
 
 
   client.on("message", message => {
@@ -570,76 +568,8 @@ const zead = [
   }
 });
 
-const Langs = ['afrikaans', 'albanian', 'amharic', 'arabic', 'armenian', 'azerbaijani', 'bangla', 'basque', 'belarusian', 'bengali', 'bosnian', 'bulgarian', 'burmese', 'catalan', 'cebuano', 'chichewa', 'chinese simplified', 'chinese traditional', 'corsican', 'croatian', 'czech', 'danish', 'dutch', 'english', 'esperanto', 'estonian', 'filipino', 'finnish', 'french', 'frisian', 'galician', 'georgian', 'german', 'greek', 'gujarati', 'haitian creole', 'hausa', 'hawaiian', 'hebrew', 'hindi', 'hmong', 'hungarian', 'icelandic', 'igbo', 'indonesian', 'irish', 'italian', 'japanese', 'javanese', 'kannada', 'kazakh', 'khmer', 'korean', 'kurdish (kurmanji)', 'kyrgyz', 'lao', 'latin', 'latvian', 'lithuanian', 'luxembourgish', 'macedonian', 'malagasy', 'malay', 'malayalam', 'maltese', 'maori', 'marathi', 'mongolian', 'myanmar (burmese)', 'nepali', 'norwegian', 'nyanja', 'pashto', 'persian', 'polish', 'portugese', 'punjabi', 'romanian', 'russian', 'samoan', 'scottish gaelic', 'serbian', 'sesotho', 'shona', 'sindhi', 'sinhala', 'slovak', 'slovenian', 'somali', 'spanish', 'sundanese', 'swahili', 'swedish', 'tajik', 'tamil', 'telugu', 'thai', 'turkish', 'ukrainian', 'urdu', 'uzbek', 'vietnamese', 'welsh', 'xhosa', 'yiddish', 'yoruba', 'zulu'];
 
-client.on('message', message => {
-	var prefix = "$";
-if (message.content.startsWith(prefix + 'trans')) {
-    let args = message.content.split(" ").slice(1);
-    if (!args[0]) {
-    
-        const embed = new Discord.RichEmbed()
-            .setColor("FFFFFF")
-            .setDescription("**ترجمة الكتابة.**\استعمل: `-translate <الكلمة لتبي> <االغة>`");
 
-        return message.channel.send(embed);
-
-    } else {
-
-        if (args.length === undefined) {
-
-            return message.channel.send("**ترجمة الكتابة.**\استعمل: `-translate <الكلمة لتبي> <االغة>`");
-
-        } else {
-
-            let transArg = args[0].toLowerCase();
-
-            args = args.join(' ').slice(1)
-            let translation;
-
-            if (!Langs.includes(transArg)) return message.channel.send(`**Language not found.**`);
-            args = args.slice(transArg.length);
-
-            translate(args, {
-                to: transArg
-            }).then(res => {
-
-                const embed = new Discord.RichEmbed()
-                    .setAuthor("Translator", client.user.displayAvatarURL)
-                    .addField(`Input`, `\`\`\`${args}\`\`\``)
-                    .setColor("#42f4c8")
-                    .addField(`Output`, `\`\`\`${res.text}\`\`\``);
-                return message.channel.send(embed);
-            });
-        }
-    }
-}
-});
-
- client.on('message', message => {
-	 var prefix ="$";
- if(message.content.startsWith(prefix +"server")){
-if(!message.channel.guild) return message.reply(' ');
-const millis = new Date().getTime() - message.guild.createdAt.getTime();
-const now = new Date();
-dateFormat(now, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
-const verificationLevels = ['None', 'Low', 'Medium', 'Insane', 'Extreme'];
-const days = millis / 1000 / 60 / 60 / 24;
-let roles = client.guilds.get(message.guild.id).roles.map(r => r.name);
-var embed  = new Discord.RichEmbed()
-.setAuthor(message.guild.name, message.guild.iconURL)
-.addField("**🆔 Server ID:**", message.guild.id,true)
-.addField("**📅 Created On**", message.guild.createdAt.toLocaleString(),true)
-.addField("**👑 Owned by**",`${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
-.addField("👥 Members ",`[${message.guild.memberCount}]`,true)
-.addField('**💬 Channels **',`**${message.guild.channels.filter(m => m.type === 'text').size}**` + ' text | Voice  '+ `**${message.guild.channels.filter(m => m.type === 'voice').size}** `,true)
-.addField("**🌍 Others **" , message.guild.region,true)
-.addField("** 🔐 Roles **",`**[${message.guild.roles.size}]** Role `,true)
-.setColor('RANDOM')
-message.channel.sendEmbed(embed)
-
-}
-});
 client.on('message', message => {
     if (message.content.startsWith("$bot")) {
     message.channel.send({
@@ -722,150 +652,7 @@ var fkk =[
    ];
 
 
-   client.on("message", async message => {
-	   var prefix = "$";
-    if(message.content == prefix+"فكك"){
-        if(UserBlocked.has(message.guild.id)) return message.channel.send("هناك جلسة .")
-        UserBlocked.add(message.guild.id)
-        var ask = fkk[Math.floor(Math.random() * fkk.length)];
-        let embed = new Discord.RichEmbed()
-        .setTitle('لعبة فكك')
-        .setAuthor(message.author.username, message.author.avatarURL)
-        .setColor("RANDOM")
-        .setDescription(ask.f);
-        message.channel.sendEmbed(embed).then(msg=> msg.delete(200000))
-        const msgs = await message.channel.awaitMessages(msg => msg.author.id !== client.user.id ,{maxMatches:1,time:100000});
-            UserBlocked.delete(message.guild.id)
-        msgs.forEach(result => {
-           if(result.author.id == client.user.id) return;
-           if(result.content == "فكك") return
-           if(result.content == ask.k){
 
-             let embeds = new Discord.RichEmbed()
-             .setTitle(':white_check_mark: اجابة صحيحة')
-             .setAuthor(message.author.username, message.author.avatarURL)
-             .setColor("RANDOM")
-             .setDescription(`**${result.author.username}** الإجابة صحيحة`);
-                message.channel.sendEmbed(embeds);                return;
-           } else {
-
-                               var embedx = new Discord.RichEmbed()
-             .setTitle(':x:خطاء')
-             .setAuthor(message.author.username, message.author.avatarURL)
-             .setColor("RANDOM")
-             .setDescription(`**${result.author.username}** الإجابة خاطئة`);
-
-                message.channel.sendEmbed(embedx);
-           }
-     });
-  }
-});
-
-
-
-
-
-   client.on("message", async message => {
-var prefix = "$";
-var aoasm =[
-    {q:"ما عاصمة **المغرب**",a:"الرباط"},
-    {q:"ما عاصمة **افغانستان**",a:"كبل"},
-    {q:"ما عاصمة ** البانيا**",a:"تيران"},
-    {q:"ما عاصمة **الجزائر **",a:"الجزائر"},
-    {q:"ما عاصمة ** **",a:"الجزائر"},
-    {q:"ما عاصمة **اندورا لا فيلا **",a:"اندورا"},
-    {q:"ما عاصمة **انجولا**",a:"لواندا"},
-    {q:"ما عاصمة **انتيجوا وباربودا**",a:"سان جونز"},
-    {q:"ما عاصمة **الارجنتين**",a:"بوينس ايرس"},
-    {q:"ما عاصمة **ارمينيا**",a:"يريفان"},
-    {q:"ما عاصمة ** مصر**",a:"القاهرة"},
-    {q:"ما عاصمة ** استراليا**",a:"كانبرا"},
-    {q:"ما عاصمة **النمسا**",a:"فيينا"},
-    {q:"ما عاصمة ** اذربيجان**",a:"باكو"},
-    {q:"ما عاصمة **جزر البهاما**",a:"ناساو"},
-    {q:"ما عاصمة **البحرين**",a:"المنامة"},
-    {q:"ما عاصمة ** بنجلاد��ش**",a:"دكـا"},
-    {q:"ما عاصمة **باربادوس **",a:"بريدجتاون"},
-    {q:"ما عاصمة **بيلا روسيا**",a:"مينسك"},
-    {q:"ما عاصمة ** بلجيكا**",a:"بروكسل"},
-    {q:"ما عاصمة ** بيليز**",a:"بلوم بان"},
-    {q:"ما عاصمة ** بنين**",a:"بورتو نوفو"},
-    {q:"ما عاصمة ** بوتان**",a:"ثيمفو"},
-    {q:"ما عاصمة **بوليفيا **",a:"لاباز"},
-    {q:"ما عاصمة ** البوسنة والهرسك**",a:"سراييفو"},
-    {q:"ما عاصمة ** بوتسوانا**",a:"جابورون"},
-    {q:"ما عاصمة ** البرازيل**",a:"برازيليا"},
-    {q:"ما عاصمة ** بروناى**",a:"بندر سرى بيجاوان"},
-    {q:"ما عاصمة ** بلغاريا**",a:"صوفيا"},
-    {q:"ما عاصمة ** بوركينا فاسو**",a:"واجادوجو"},
-    {q:"ما عاصمة **بوروندى **",a:"بوجومبورا"},
-    {q:"ما عاصمة **كمبوديا **",a:"بنوم بنـه"},
-    {q:"ما عاصمة ** الكاميرون**",a:"ياوندى"},
-    {q:"ما عاصمة ** كندا**",a:"اوتاوا"},
-    {q:"ما عاصمة ** الرأس الاخضر**",a:"برايا"},
-    {q:"ما عاصمة **تشاد **",a:"نجامينا"},
-    {q:"ما عاصمة ** شيلى**",a:"سانتياجو"},
-    {q:"ما عاصمة **الصين **",a:"بكين"},
-    {q:"ما عاصمة ** **",a:"مورونى"},
-    {q:"ما عاصمة **كوستاريكا **",a:"سان خوسيه"},
-    {q:"ما عاصمة ** كوت ديفوار**",a:"ابيدجان"},
-    {q:"ما عاصمة **كرواتيا **",a:"زغرب"},
-    {q:"ما عاصمة ** كوبا**",a:"هافانا"},
-    {q:"ما عاصمة ** قبرص**",a:" "},
-    {q:"ما عاصمة ** جمهورية التشيك**",a:"براغ"},
-    {q:"ما عاصمة **الدنمارك **",a:"كوبنهاجن"},
-    {q:"ما عاصمة ** جيبوتى**",a:"جيبوتى"},
-    {q:"ما عاصمة ** دومينيكا**",a:"روسيو"},
-    {q:"ما عاصمة **الدومينيكان **",a:"سان دومينجو"},
-    {q:"ما عاصمة **تيمور الشرقية **",a:"ديلى"},
-    {q:"ما عاصمة **قطر  **",a:"الدوحة"},
-    {q:"ما عاصمة **السعودية  **",a:"الرياض"},
-    {q:"ما عاصمة **سوريا  **",a:"دمشق"},
-    {q:"ما عاصمة **تركيا  **",a:"انقرة"},
-    {q:"ما عاصمة **العراق  **",a:"بغداد"},
-    {q:"ما عاصمة **البنان  **",a:"بيروت"},
-    {q:"ما عاصمة **فلسطين  **",a:"القدس"},
-    {q:"ما عاصمة **امريكا  **",a:"واشنطن"},
-    {q:"ما عاصمة **الاردن  **",a:"عمان"},    
-    {q:"ما عاصمة **السودان  **",a:"خرطوم"},
-    {q:"ما عاصمة **الما��يا  **",a:"برلين"},
-    {q:"ما عاصمة **كندا  **",a:"اوتاوا"},
-    {q:"ما عاصمة **البرازيل  **",a:"برازيليا"},
-   ];
-    if(message.content == prefix+"عواصم"){
-        if(UserBlocked.has(message.guild.id)) return message.channel.send("هناك جلسة .")
-        UserBlocked.add(message.guild.id)
-        var ask = aoasm[Math.floor(Math.random() * aoasm.length)];
-        let embed = new Discord.RichEmbed()
-        .setTitle('سؤال عواصم')
-        .setAuthor(message.author.username, message.author.avatarURL)
-        .setColor("RANDOM")
-        .setDescription(ask.q);
-        message.channel.sendEmbed(embed).then(msg=> msg.delete(20000))
-        const msgs = await message.channel.awaitMessages(msg => msg.author.id !== client.user.id ,{maxMatches:1,time:10000});
-            UserBlocked.delete(message.guild.id)
-        msgs.forEach(result => {
-           if(result.author.id == client.user.id) return;
-           if(result.content == "عاصمة") return
-           if(result.content == ask.a){
-             let embeds = new Discord.RichEmbed()
-             .setTitle(':white_check_mark: اجابة صحيحة')
-             .setAuthor(message.author.username, message.author.avatarURL)
-             .setColor("RANDOM")
-             .setDescription(`**${result.author.username}** الإجابة صحيحة`);
-                message.channel.sendEmbed(embeds);                return;
-           } else {
-
-                                  var embedx = new Discord.RichEmbed()
-                .setTitle(':x:خطاء')
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setColor("RANDOM")
-                .setDescription(`**${result.author.username}** الإجابة خاطئة`);
-                message.channel.sendEmbed(embedx);
-           }
-     });
-  }
-});
 
 const cuttweet = [     'كت تويت ‏| تخيّل لو أنك سترسم شيء وحيد فيصبح حقيقة، ماذا سترسم؟',     'كت تويت | أكثر شيء يُسكِت الطفل برأيك؟',     'كت تويت | الحرية لـ ... ؟',     'كت تويت | قناة الكرتون المفضلة في طفولتك؟',     'كت تويت ‏| كلمة للصُداع؟',     'كت تويت ‏| ما الشيء الذي يُفارقك؟',     'كت تويت ‏| ما الشيء الذي يُفارقك؟',     'كت تويت | ��وقف مميز فعلته مع شخص ولا يزال يذكره لك؟',     'كت تويت ‏| أيهما ينتصر، الكبرياء أم الحب؟',     'كت تويت | بعد ١٠ سنين ايش بتكون ؟',     'كت تويت ‏| مِن أغرب وأجمل الأسماء التي مرت عليك؟',     '‏كت تويت | عمرك شلت مصيبة عن ش��������ص برغبتك ؟',     'كت تويت | أكثر سؤال وجِّه إليك مؤخرًا؟',     '‏كت تويت | ما هو الشيء الذي يجعلك تشعر بالخوف؟',     '‏كت تويت | وش يفسد الصداقة؟',     '‏كت تويت | شخص لاترفض له طلبا ؟',     '‏كت تويت | كم مره خسرت شخص تحبه؟.',     '‏كت تويت | كيف تتعامل مع الاشخاص السلبيين ؟',     '‏كت تويت | كلمة تشعر بالخجل اذا قيلت لك؟',     '‏كت تويت | جسمك اكبر من عٌمرك او العكسّ ؟!',     '‏كت تويت |أقوى كذبة مشت عليك ؟',     '‏كت تويت | تتأثر بدموع شخص يبكي قدامك قبل تعرف السبب ؟',     'كت تويت | هل حدث وضحيت من أجل شخصٍ أحببت؟',     '‏كت تويت | أكثر تطبيق تستخدمه مؤخرًا؟',     '‏كت تويت | ‏اكثر شي يرضيك اذا زعلت بدون تفكير ؟',     '‏كت تويت | وش محتاج عشان تكون مبسوط ؟',     '‏كت تويت | مطلبك الوحيد الحين ؟',     '‏كت تويت | هل حدث وشعرت بأنك ارتكبت أحد الذنوب أثناء الصيام؟',];
  client.on('message', message => {
@@ -909,35 +696,7 @@ var prefix = "$";
     }
        
 });
-client.on('message', message => { 
-	var prefix ="$";
-           if (message.content.startsWith(prefix + "id")) {
-     var args = message.content.split(" ").slice(1);
-     let user = message.mentions.users.first();
-     var men = message.mentions.users.first();
-        var heg;
-        if(men) {
-            heg = men
-        } else {
-            heg = message.author
-        }
-      var mentionned = message.mentions.members.first();
-         var h;
-        if(mentionned) {
-            h = mentionned
-        } else {
-            h = message.member
-        }
-               moment.locale('ar-TN');
-      var id = new  Discord.RichEmbed()
-      .setAuthor(message.author.username, message.author.avatarURL) 
-    .setColor("#707070")
-    .addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
-    .addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)               
-    .setFooter(`Fox Bot`, 'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')                                 
-    .setThumbnail(heg.avatarURL);
-    message.channel.send(id)
-}       });
+
 
 client.on('message', message => {
         if (message.content === "$inv") {
