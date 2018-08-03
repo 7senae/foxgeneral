@@ -5,15 +5,13 @@ client.on('ready', () => {
     console.log('I am ready!');
 });
 client.on('ready', () => {
-   console.log(`----------------`);
-      console.log(`Desert Bot- Scrpit By ┃ ArabSupport`);
-        console.log(`----------------`);
-      console.log(`ON ${client.guilds.size} Servers '     Bot By TEAM ArabSupport ' `);
-    console.log(`----------------`);
-  console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(` Bot By TEAM FoxBot `,"http://twitch.tv/S-F")
-client.user.setStatus("dnd")
-});
+    console.log(`Logged in as ${client.user.tag} !`);
+          client.user.setActivity("Bot By TEAM FoXBot",{type: 'WATCHING'});
+  
+  });
+  //npm i -S hydrabolt/discord.js
+
+
 
   client.on("message", message => {
 	var prefix = "$";
