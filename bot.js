@@ -1,6 +1,10 @@
 const Discord = require('discord.js');
-const client = new Discord.Client(
+const client = new Discord.Client();
 
+client.on('ready', () => {
+     client.user.setActivity(" $help | By 'KillerFox.",{type: 'WATCHING'})
+
+});
 
 
   client.on("message", message => {
