@@ -9,7 +9,6 @@ client.on('ready', () => {
           client.user.setActivity("Bot By TEAM FoXBot",{type: 'WATCHING'});
   
   });
-  //npm i -S hydrabolt/discord.js
 
 
 
