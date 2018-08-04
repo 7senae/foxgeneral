@@ -3,7 +3,6 @@ const client = new Discord.Client();
 
 console.log("Welcome Again  by Fox!");
 
-
   client.on("message", message => {
 	var prefix = "$";
  if (message.content === "$help") {
