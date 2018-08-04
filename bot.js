@@ -574,7 +574,6 @@ client.on('message', msg => {
   message.channel.sendEmbed(embed);
     }
 });
-var prefix = "$";
 client.on('message', message => {
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
@@ -584,7 +583,7 @@ client.on('message', message => {
 
   let args = message.content.split(" ").slice(1);
 
-  if (command == "say") {
+  if (command == "$say") {
    message.channel.sendMessage(args.join("  "))
   }
   });
@@ -1084,5 +1083,4 @@ client.on('ready', () => {
 
             }
 });
-
 client.login('NDYwNzk3MTEzNjQzNjk2MTI5.DkHZmg.L3L-lq44ROuc6ni7tzkjXhIjoNc');
