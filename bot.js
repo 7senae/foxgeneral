@@ -786,6 +786,5 @@ client.on('message', message => {
         })
     }
 });
-
-
-client.login('NDYwNzk3MTEzNjQzNjk2MTI5.DkHZmg.L3L-lq44ROuc6ni7tzkjXhIjoNc');
+// THIS  MUST  BE  THIS  WAY
+client.login(process.env.BOT_TOKEN);
