@@ -94,6 +94,7 @@ client.on("message", message => {
 ❖$نكت ~ نكت 
 ❖$لعبة فكك ~ فكك
 ❖$عواصم عشوائية ~ عواصم
+❖$لعبة التهكير ~ تهكير
 ❖$لعبة كت تويت ~ كت تويت
 ❖$roll <number> ~ قرعة
 ❖$لو خيروك بطريقة حلوة ~ لو خيروك
@@ -246,7 +247,7 @@ client.on('message', msg => {
   .setThumbnail(message.author.avatarURL)  
   .setAuthor(message.author.username)
 .setDescription("معلومات عن الحــساب")
-               .setFooter(`Name Bot.`, '')
+               .setFooter(`FoxBot.`, '')
   .setColor("#9B59B6")
   .addField("اســـم الحســاب", `${message.author.username}`)
   .addField('كود الحساب الخاص', message.author.discriminator)
@@ -292,9 +293,9 @@ client.on('ready', () => {
  if (message.content === "$help-js-source-1") {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
-      .setFooter('─═════════ {✯ArabSupport✯} ════════════─')
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
 	  .addField('**❖ كود السورس الأساسي https://hastebin.com/xumiferaru.coffeescript**')
-      .setFooter('─═════════ {✯ArabSupport✯} ════════════─')
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
   message.author.send({embed});
   }
 });
@@ -302,9 +303,9 @@ client.on('ready', () => {
  if (message.content === "$help-js-source-2") {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
-      .setFooter('─═════════ {✯ArabSupport✯} ════════════─')
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
 	  .addField('** ❖ السورس الأساسي مع الستريمنق ومعلومات البوت https://hastebin.com/idotifusid.coffeescript **')
-      .setFooter('─═════════ {✯ArabSupport✯} ════════════─')
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
   message.author.send({embed});
   }
 });
@@ -313,9 +314,9 @@ client.on('ready', () => {
  if (message.content === "$help-js-source-3") {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
-      .setFooter('─═════════ {✯ArabSupport✯} ════════════─')
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
 	  .addField('** ❖ السورس الأساسي مع الواتشينق https://hastebin.com/jivizupafi.coffeescript **')
-      .setFooter('─═════════ {✯ArabSupport✯} ════════════─')
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
   message.author.send({embed});
   }
 });
@@ -351,7 +352,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
          client.on('message', message => {
-            if (message.content === '^bot') {
+            if (message.content === '$bot') {
               message.channel.send('***:heart:*** **Bot By Team FoxBot** ***:heart:***');
               message.channel.sendFile("./photoshop.PNG");
                
@@ -585,7 +586,7 @@ client.on('message', message => {
             .addField('``My Name``' , `[ ${client.user.tag} ]` , true)
             .addField('``My ID``' , `[ ${client.user.id} ]` , true)
 			      .addField('``My Prefix``' , `[ $ ]` , true)
-			      .addField('``My Language``' , `[ Java Script ]` , true)
+			      .addField('``My Language``' , `[ Python ]` , true)
 			      .setFooter('By | KillerFox')
     })
 }
@@ -696,6 +697,39 @@ var prefix = "$";
        
 });
 
+client.on('message', message => {
+    if (message.content.startsWith("$تهكير")) {
+      if (message.author.bot) return
+           message.delete();
+             let args = message.content.split(' ').slice(1);
+                   let virusname = args.join(' ');
+                 if (virusname < 1) {
+                     return message.channel.send("``اكتب اسم الشخص الي تبي يتهكر``");
+                                     }
+                 message.channel.send({embed: new Discord.RichEmbed().setTitle('Loading ' + virusname + "...").setColor(0xFF0000)}).then(function(m) {
+             setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓ ] 1%').setColor(0xFF0000)})
+             }, 1000)
+            setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓] 25%').setColor(0xFF0000)})
+             }, 2000)
+           setTimeout(function() {     
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 100%').setColor(0xFF0000)})
+             }, 3000)
+                setTimeout(function() {
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Uploaded! Initiating explosion in 1...').setColor(0xFF0000)})
+             }, 4000)
+              setTimeout(function() {
+               m.delete()
+           }, 5000)
+             setTimeout(function() {
+               message.channel.send('تم تهكير بنجاح')
+           }, 6000)
+           });
+         }
+ });
+
+
 
 client.on('message', message => {
         if (message.content === "$inv") {
@@ -757,6 +791,31 @@ m.sendMessage(args)
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+});
+
+ client.on('message', message => {
+	 var prefix ="$";
+ if(message.content.startsWith(prefix +"server")){
+if(!message.channel.guild) return message.reply(' ');
+const millis = new Date().getTime() - message.guild.createdAt.getTime();
+const now = new Date();
+dateFormat(now, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
+const verificationLevels = ['None', 'Low', 'Medium', 'Insane', 'Extreme'];
+const days = millis / 1000 / 60 / 60 / 24;
+let roles = client.guilds.get(message.guild.id).roles.map(r => r.name);
+var embed  = new Discord.RichEmbed()
+.setAuthor(message.guild.name, message.guild.iconURL)
+.addField("**🆔 Server ID:**", message.guild.id,true)
+.addField("**📅 Created On**", message.guild.createdAt.toLocaleString(),true)
+.addField("**👑 Owned by**",`${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
+.addField("👥 Members ",`[${message.guild.memberCount}]`,true)
+.addField('**💬 Channels **',`**${message.guild.channels.filter(m => m.type === 'text').size}**` + ' text | Voice  '+ `**${message.guild.channels.filter(m => m.type === 'voice').size}** `,true)
+.addField("**🌍 Others **" , message.guild.region,true)
+.addField("** 🔐 Roles **",`**[${message.guild.roles.size}]** Role `,true)
+.setColor('RANDOM')
+message.channel.sendEmbed(embed)
+
+}
 });
 
 client.on('message', message => {
