@@ -48,7 +48,7 @@ console.log("--------------------");
 
   client.on("message", message => {
 	var prefix = "$";
- if (message.content === "$help") {
+ if (message.content === "$help-4") {
   const embed = new Discord.RichEmbed()  
       .setColor("RANDOM") 
       .setDescription(`
