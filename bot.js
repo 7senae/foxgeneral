@@ -38,13 +38,48 @@ console.log("--------------------");
 ❖ $help-1 ➺    قائمةالعاب ⦁
 ❖ $help-2 ➺    قائمة الاكواد ⦁
 ❖ $help-3 ➺    قائمة العامة ⦁
-❖ $help-4 ➺    Soon ⦁
+❖ $help-4 ➺    قائمة اغاني ⦁
 ─═════════ {✯FoxBot✯} ════════════─
 	  `)
    message.channel.sendEmbed(embed)
     
    }
    });
+
+  client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help") {
+  const embed = new Discord.RichEmbed()  
+      .setColor("RANDOM") 
+      .setDescription(`
+	  
+	         Please Chose: 
+			 
+─═════════ {✯FoxBot✯} ════════════─
+❖ $play
+لتشغيل أغنية برآبط أو بأسم
+❖ $skip
+لتجآوز الأغنية الحآلية
+❖ $pause
+إيقآف الأغنية مؤقتا
+❖ $resume
+لموآصلة الإغنية بعد إيقآفهآ مؤقتا
+.vol
+تغيير درجة الصوت 100 - 0
+❖ $stop
+لإخرآج البوت من الروم
+❖ $nb
+لمعرفة الأغنية المشغلة حآليا
+❖ $queue
+لمعرفة قآئمة التشغيل
+تم انهاء كل الاوامر اتمنى تستمتعوا بالبوت
+─═════════ {✯FoxBot✯} ════════════─
+	  `)
+   message.channel.sendEmbed(embed)
+    
+   }
+   });
+
 
 client.on('message', message => {
             if(!message.channel.guild) return;
@@ -950,7 +985,7 @@ client.on('message', async msg => {
 	if (command === `play`) {
 		const voiceChannel = msg.member.voiceChannel;
         
-        if (!voiceChannel) return msg.channel.send("I can't find you in any voice channel!");
+        if (!voiceChannel) return msg.channel.send("انته لست موجود في روم صوتي!");
         
         const permissions = voiceChannel.permissionsFor(msg.client.user);
         
@@ -1032,7 +1067,7 @@ client.on('message', async msg => {
 		if (!msg.member.voiceChannel) return msg.channel.send("You Must be in a Voice channel to Run the Music commands!");
         if (!serverQueue) return msg.channel.send("There is no Queue to skip!!");
 
-		serverQueue.connection.dispatcher.end('Ok, skipped!');
+		serverQueue.connection.dispatcher.end('تم تخطي الاغنيه!');
         return undefined;
         
 	} else if (command === `stop`) {
@@ -1078,7 +1113,7 @@ client.on('message', async msg => {
 		if (serverQueue && serverQueue.playing) {
 			serverQueue.playing = false;
 			serverQueue.connection.dispatcher.pause();
-			return msg.channel.send('Ok, paused');
+			return msg.channel.send('تم توقيف !');
 		}
 		return msg.channel.send('There is no Queue to Pause!');
 	} else if (command === "resume") {
@@ -1160,35 +1195,6 @@ function play(guild, song) {
 }
 
 
-client.on('message', message => {
-    if (message.content === 'help') {
-        let helpEmbed = new Discord.RichEmbed()
-        .setTitle('**أوامر الميوزك...**')
-        .setDescription('**برفكس البوت (!)**')
-        .addField('play', 'لتشغيل اغنية')
-        .addField('join', 'دخول رومك الصوتي')
-        .addField('disconnect', 'الخروج من رومك الصوتي')
-        .addField('skip', 'تخطي الأغنية')
-        .addField('pause', 'ايقاف الاغنية مؤقتا')
-        .addField('resume', 'تكملة الاغنية')
-        .addField('queue', 'اظهار قائمة التشغيل')
-        .addField('np', 'اظهار الاغنية اللي انت مشغلها حاليا')
-        .setFooter('(general_commands) لاظهار الاوامر العامة')
-      message.channel.send(helpEmbed);
-    }
-});
-
-client.on('message', message => {
-    if (message.content === 'general_commands') {
-        let helpEmbed = new Discord.RichEmbed()
-        .setTitle('**أوامر عامة...**')
-        .addField('avatar', "افاتار الشخص المطلوب")
-        .addField('gif', 'البحث عن جيف انت تطلبه')
-        .addField('ping', 'معرفة ping البوت')
-        .setFooter('المزيد قريبا ان شاء الله!')
-      message.channel.send(helpEmbed);
-    }
-});
 
 
 // THIS  MUST  BE  THIS  WAY
