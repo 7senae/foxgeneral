@@ -404,6 +404,23 @@ client.on('ready', () => {
 
             }
 });
+client.on('guildCreate', guild => {
+  var embed = new Discord.RichEmbed()
+  .setColor(0x5500ff)
+  .setDescription(`**:heart: FoxBot شكراً لانك ضفت بوت :heart: *`)
+      guild.owner.send(embed)
+});
+
+client.on('message', message => {
+    var prefix = "$"
+    if (message.content === prefix + "date") {
+        var currentTime = new Date(),
+            السنة = currentTime.getFullYear(),
+            الشهر = currentTime.getMonth() + 1,
+            اليوم = currentTime.getDate();
+        message.channel.sendMessage( "التاريخ : " + اليوم + "-" + الشهر + "-" +السنة)
+    }
+});
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
