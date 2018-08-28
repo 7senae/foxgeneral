@@ -45,19 +45,19 @@ console.log("--------------------");
     
    }
    });
-`client`.on('message', message => {
-    if (message.content.startsWith("$ide")) {
+client.on('message', message => {
+    if (message.content.startsWith("$id")) {
     message.channel.send({
-        embed: new `Discord.RichEmbed()`
-            .setAuthor`(client.user.username,client.user.avatarURL)`
-            .setThumbnail`(client.user.avatarURL)`
+        embed: new Discord.RichEmbed()
+            .setAuthor(client.user.username,client.user.avatarURL)
+            .setThumbnail(client.user.avatarURL)
             .setColor('Red')
             .setTitle('``INFO Name Bot`` ')
             .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
             .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
-            .addField('``servers``', `[ client.guilds.size]` , true) 
-            .addField('``My Name``' , `[ client.user.tag} ]` , true)
-            .addField('``My ID``' , `[ {client.user.id} ]` , true)
+            .addField('``servers``', [client.guilds.size], true) 
+            .addField('``My Name``' , `[ ${client.user.tag} ]` , true)
+            .addField('``My ID``' , `[ ${client.user.id} ]` , true)
             .addField("``Your Name``", `${message.author.username}`)
             .addField('``your tag``', message.author.discriminator)
             .addField('``Your id``', message.author.id)
