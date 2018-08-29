@@ -25,6 +25,21 @@ console.log("--------------------");
 console.log("  FOX BOT Online ");
 console.log("--------------------");
 
+
+client.on('ready', () => {
+    console.log('I am ready!');
+});
+client.on('ready', () => {
+   console.log(`----------------`);
+      console.log(`Desert Bot- Scrpit By ┃ ArabSupport`);
+        console.log(`----------------`);
+      console.log(`ON ${client.guilds.size} Servers '     Bot By TEAM ArabSupport ' `);
+    console.log(`----------------`);
+  console.log(`Logged in as ${client.user.tag}!`);
+client.user.setGame(`$help || $inv `,"http://twitch.tv/S-F")
+client.user.setStatus("dnd")
+});
+
   client.on("message", message => {
 	var prefix = "$";
  if (message.content === "$help") {
