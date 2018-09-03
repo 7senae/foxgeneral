@@ -45,7 +45,7 @@ client.user.setStatus("dnd")
  if (message.content === "$help") {
   const embed = new Discord.RichEmbed()  
       .setColor("RANDOM") 
-      .setDescription(`
+      .setDescription(` **
 	  
 	         Please Chose: 
 			 
@@ -55,7 +55,33 @@ client.user.setStatus("dnd")
 ❖ $help-3 ➺    قائمة العامة ⦁
 ❖ $help-4 ➺    قائمة اغاني ⦁
 ─═════════ {✯FoxBot✯} ════════════─
-	  `)
+	  ** `)
+   message.channel.sendEmbed(embed)
+    
+   }
+   });
+  client.on("message", message => {
+	var prefix = "$";
+ if (message.content === "$help-3") {
+  const embed = new Discord.RichEmbed()  
+      .setColor("RANDOM") 
+      .setDescription(` **
+	  
+	         Please Chose: 
+			 
+─═════════ {✯FoxBot✯} ════════════─
+❖$ban ➺  تبنيد العضو ⦁
+❖$kick ➺   طرد عضو ⦁
+❖$clear ➺   مسح الشات ⦁
+❖$oc  ➺   فتح ➺    ⦁ الشات ⦁  
+❖$fc  ➺   قفل الشات ⦁
+❖$invite ➺   دعوه لمده يوم100 عضو ⦁
+❖$cc ➺   انشاء شات ⦁
+❖$cv ➺   انشاء روم صوتي ⦁
+❖$support ➺   سيرفر المساعده ⦁
+❖$inv ➺   دعوة البوت ⦁
+─═════════ {✯FoxBot✯} ════════════─
+	  ** `)
    message.channel.sendEmbed(embed)
     
    }
@@ -116,7 +142,7 @@ channel.send({embed : embed});
  if (message.content === "$help-4") {
   const embed = new Discord.RichEmbed()  
       .setColor("RANDOM") 
-      .setDescription(`
+      .setDescription(` **
 	  
 	         Please Chose: 
 			 
@@ -139,7 +165,7 @@ channel.send({embed : embed});
 لمعرفة قآئمة التشغيل
 تم انهاء كل الاوامر اتمنى تستمتعوا بالبوت
 ─═════════ {✯FoxBot✯} ════════════─
-	  `)
+	  ** `)
    message.channel.sendEmbed(embed)
     
    }
@@ -165,7 +191,7 @@ client.on("message", message => {
 	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
-      .setDescription(`
+      .setDescription(` **
 			  اوامر عامة
 ❖$allbots ~ لعرض جميع البوتات الي بالسيرفر
 ❖$server ~يعرض لك معلومات عن السيرفر
@@ -195,7 +221,7 @@ client.on("message", message => {
 ❖$inv ~ لدعوة البوت الى سيرفرك
 ❖$support ~ سيرفر الدعم
 ❖$contact ~ ارسال اقتراح او لمراسلة صاحب البوت
-`)
+** `)
    message.author.sendEmbed(embed)
     
    }
@@ -214,7 +240,7 @@ member.addRole(member.guild.roles.find('name', 'Member'));
 	  message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
-      .setDescription(`
+      .setDescription(` **
           اوامر الالعاب
 ❖$rps ~ حجر ورقة مقص
 ❖$speed ~ اسرع كتابة
@@ -228,7 +254,7 @@ member.addRole(member.guild.roles.find('name', 'Member'));
 ❖$لو خيروك بطريقة حلوة ~ لو خيروك
 ❖$لعبة مريم ~ مريم
 ❖$فوائد ونصائح  ~ هل تعلم
-❖$يعطيك عقابات قاسية ~ عقاب   `)
+❖$يعطيك عقابات قاسية ~ عقاب   ** `)
    message.author.sendEmbed(embed)
     
    }
@@ -239,7 +265,7 @@ member.addRole(member.guild.roles.find('name', 'Member'));
  if (message.content === "$help-2") {
   const embed = new Discord.RichEmbed()  
       .setColor("RANDOM") 
-      .setDescription(`
+      .setDescription(` **
 	  
 	         Please Chose: 
 			 
@@ -248,7 +274,7 @@ member.addRole(member.guild.roles.find('name', 'Member'));
 
 ❧ $help-py ➺ ⦁ قائمة أكواد البايثون ⦁
 ─═════════ {✯FoxBot✯} ════════════─
-	  `)
+	  ** `)
    message.channel.sendEmbed(embed)
     
    }
@@ -258,7 +284,7 @@ member.addRole(member.guild.roles.find('name', 'Member'));
  if (message.content === "$help-js") {
   const embed = new Discord.RichEmbed()  
       .setColor("RANDOM") 
-      .setDescription(`
+      .setDescription(` **
 	  
 	         Please Chose: 
 			 
@@ -273,7 +299,7 @@ member.addRole(member.guild.roles.find('name', 'Member'));
 
 ❧ $help-js-bc ➺ ⦁ قسم أكواد البرودكاست ⦁
 ─═════════ {✯FoxBot✯} ════════════─
-	  `)
+	 ** `)
    message.channel.sendEmbed(embed)
     
    }
@@ -283,7 +309,7 @@ member.addRole(member.guild.roles.find('name', 'Member'));
  if (message.content === "$help-py") {
   const embed = new Discord.RichEmbed()  
       .setColor("RANDOM") 
-      .setDescription(`
+      .setDescription(` **
 	  
 	         Please Chose: 
 			 
@@ -295,7 +321,7 @@ member.addRole(member.guild.roles.find('name', 'Member'));
 
 ❧ Soon ⦁
 ─═════════ {✯FoxBot✯} ════════════─
-	  `)
+	 ** `)
    message.channel.sendEmbed(embed)
     
    }
@@ -307,12 +333,12 @@ member.addRole(member.guild.roles.find('name', 'Member'));
  if (message.content === "$help-js-bc") {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
-      .setFooter('─═════════ {✯ArabSupport✯} ════════════─')
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
 	  .addField('**❖ برودكاست + للكل + مطور ➺',` ⦁  https://hastebin.com/bipanureqa.js ⦁**`)
 	  .addField('**❖ برودكاست + للكل + غير مطور ➺',` ⦁  https://hastebin.com/kuvoruzowe.cs ⦁**`)
 	  .addField('**❖  برودكاست + للأونلاين + مع منشن + غير مطور ➺',` ⦁  https://hastebin.com/zujuvupali.php ⦁**`)
 	  .addField('**❖ برودكاست + للكل + مع منشن + غير مطور ➺',` ⦁  https://hastebin.com/zojokunayo.php ⦁**`)
-      .setFooter('─═════════ {✯ArabSupport✯} ════════════─')
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
   message.author.send({embed});
   }
 });
@@ -322,11 +348,11 @@ client.on("message", message => {
  if (message.content === "$help-js-welcome") {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
-      .setFooter('─═════════ {✯ArabSupport✯} ════════════─')
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
       .addField('**❖ كود ترحيب مع ذكر رقم العضو ➺',` ⦁ https://hastebin.com/zapuyexive.js**`)
       .addField('**❖ كود الترحيب مع صورة ➺',` ⦁ https://hastebin.com/tujehubuqo.php**`)
       .addField('**❖ كود مغادرة العضو ➺',` ⦁ https://hastebin.com/gufimedaca.js**`)
-      .setFooter('─═════════ {✯ArabSupport✯} ════════════─')
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
   message.author.send({embed});
   }
 });
@@ -347,11 +373,7 @@ client.on('message', msg => {
 });
 
 
-client.on('message', msg => {
-  if (msg.content === '$help-2') {
-    msg.reply('**:heart: قريبا :heart:**');
-  }
-});
+
 client.on('message', msg => {
   if (msg.content === '$help1') {
     msg.reply('**:heart:  شوف الخاص :heart:**');
