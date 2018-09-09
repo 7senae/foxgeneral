@@ -73,9 +73,13 @@ client.user.setStatus("dnd")
 ─═════════ {✯FoxBot✯} ════════════─
 ❖$ban ➺  تبنيد العضو ⦁
 ❖$kick ➺   طرد عضو ⦁
+❖$mute ➺   اسكات العضو ⦁
+❖$unmute ➺   فك اسكات العضو ⦁
 ❖$clear ➺   مسح الشات ⦁
-❖$oc  ➺   فتح ➺    ⦁ الشات ⦁  
-❖$fc  ➺   قفل الشات ⦁
+❖$unmutechannel  ➺   فتح ➺    ⦁ الشات ⦁  
+❖$mutechannel  ➺   قفل الشات ⦁
+❖$hc  ➺   اخفاء الشات ⦁
+❖$sc  ➺   الغاء اخفاء الشات ⦁
 ❖$invite ➺   دعوه لمده يوم100 عضو ⦁
 ❖$cc ➺   انشاء شات ⦁
 ❖$cv ➺   انشاء روم صوتي ⦁
@@ -108,6 +112,66 @@ client.on('message', message => {
     })
 }
 });
+client.on('message', async message =>{
+  if (message.author.boss) return;
+	var prefix = "$";
+
+if (!message.content.startsWith(prefix)) return;
+	let command = message.content.split(" ")[0];
+	 command = command.slice(prefix.length);
+	let args = message.content.split(" ").slice(1);
+	if (command == "mute") {
+		if (!message.channel.guild) return;
+		if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
+		if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
+		let user = message.mentions.users.first();
+		let muteRole = message.guild.roles.find("name", "Muted");
+		if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").then(msg => {msg.delete(5000)});
+		if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
+		let reason = message.content.split(" ").slice(2).join(" ");
+		message.guild.member(user).addRole(muteRole);
+		const muteembed = new Discord.RichEmbed()
+		.setColor("RANDOM")
+		.setAuthor(`Muted!`, user.displayAvatarURL)
+		.setThumbnail(user.displayAvatarURL)
+		.addField("**:busts_in_silhouette:  المستخدم**",  '**[ ' + `${user.tag}` + ' ]**',true)
+		.addField("**:hammer:  تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
+		.addField("**:book:  السبب**", '**[ ' + `${reason}` + ' ]**',true)
+		.addField("User", user, true)
+		message.channel.send({embed : muteembed});
+		var muteembeddm = new Discord.RichEmbed()
+		.setAuthor(`Muted!`, user.displayAvatarURL)
+		.setDescription(`      
+${user} انت معاقب بميوت كتابي بسبب مخالفة القوانين
+${message.author.tag} تمت معاقبتك بواسطة
+[ ${reason} ] : السبب
+اذا كانت العقوبة عن طريق الخطأ تكلم مع المسؤلين
+`)
+		.setFooter(`في سيرفر : ${message.guild.name}`)
+		.setColor("RANDOM")
+	user.send( muteembeddm);
+  }
+if(command === `unmute`) {
+  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.sendMessage("**ليس لديك صلاحية لفك عن الشخص ميوت**:x: ").then(m => m.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("**ما عندي برمشن**").then(msg => msg.delete(6000))
+
+  let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  if(!toMute) return message.channel.sendMessage("**عليك المنشن أولاّ**:x: ");
+
+  let role = message.guild.roles.find (r => r.name === "Muted");
+  
+  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**لم يتم اعطاء هذه شخص ميوت من الأساس**:x:")
+
+  await toMute.removeRole(role)
+  message.channel.sendMessage("**لقد تم فك الميوت عن شخص بنجاح**:white_check_mark:");
+
+  return;
+
+  }
+
+});
+ 
+
 client.on('guildMemberAdd', member => {
     var embed = new Discord.RichEmbed()
     .setAuthor(member.user.username, member.user.avatarURL)
@@ -186,47 +250,6 @@ m.sendMessage(args)
 }
 });
 
-client.on("message", message => {
-	var prefix = "-";
- if (message.content === "-help-3") {
-	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
-      .setDescription(` **
-			  اوامر عامة
-❖$allbots ~ لعرض جميع البوتات الي بالسيرفر
-❖$server ~يعرض لك معلومات عن السيرفر
-❖$bot ~ يعرض لك كل معلومات البوت
-❖$skin <name> ~ يعرض لك سكنك بماين كرافت
-❖$count ~ يعرض لك عدد الاشخاص بالسيرفر بدون بوتات
-❖$invites ~ يعرض لك  عدد انفايتاتك بالسيرفر 
-❖$invite-codes ~ يعرض لك روابط الانفايتات حكك في السيرفر 
-❖$cal ~ اله حاسبة
-❖$trans <language> <any thing> ~ يترجم لك الي تبيه من اي لغة
-❖$short ~ يختصر لك رابط كبير الى رابط صغير
-❖$tag ~ يكتب لك الكلمة بشكل جميل وكبير
-❖$google ~ للبحث في قوقل عن طريق الدسكورد
-❖$perms ~ يعرض لك برمشناتك بالسيرفر
-❖$za5 ~ يزخرف لك كلمة او جملة
-❖$rooms ~ يعرض لك كل الرومات الي بالسيرفر مع عددها
-❖$roles ~ يعرض لك كل الرانكات بالسيرفر بشكل جميل
-❖$emojilist ~ يعرض لك كل الايموجيات الي بالسيرفر
-❖$say ~ يكرر الكلام الي تكتبو
-❖$image ~ صورة السيرفر
-❖$members ~ يعرض لك عدد كل حالات الاشخاص وعدد البوتات وعدد الاشخاص
-❖$id ~ معلومات عنك
-❖$bans ~ عدد الاشخاص المبندة 
-❖$avatar ~ صورتك او صورة الي تمنشنو
-❖$embed ~ يكرر الي تقولو بشكل حلو
-❖$emoji <any things> ~ لتحويل اي كلمه تقولها الي ايموجي
-❖$inv ~ لدعوة البوت الى سيرفرك
-❖$support ~ سيرفر الدعم
-❖$contact ~ ارسال اقتراح او لمراسلة صاحب البوت
-** `)
-   message.author.sendEmbed(embed)
-    
-   }
-   });
  
 
 client.on('guildMemberAdd', (member) => {
@@ -242,6 +265,8 @@ member.addRole(member.guild.roles.find('name', 'Member'));
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(` **
+
+─═════════ {✯FoxBot✯} ════════════─
           اوامر الالعاب
 ❖$rps ~ حجر ورقة مقص
 ❖$speed ~ اسرع كتابة
@@ -255,7 +280,10 @@ member.addRole(member.guild.roles.find('name', 'Member'));
 ❖$لو خيروك بطريقة حلوة ~ لو خيروك
 ❖$لعبة مريم ~ مريم
 ❖$فوائد ونصائح  ~ هل تعلم
-❖$يعطيك عقابات قاسية ~ عقاب   ** `)
+❖$يعطيك عقابات قاسية ~ عقاب   
+─═════════ {✯FoxBot✯} ════════════─
+
+** `)
    message.author.sendEmbed(embed)
     
    }
@@ -304,7 +332,32 @@ member.addRole(member.guild.roles.find('name', 'Member'));
    message.channel.sendEmbed(embed)
     
    }
-   }); 
+   });
+client.on('message', message => {
+var prefix = "$";
+      if(message.content === prefix + "hc") {
+      if(!message.channel.guild) return;
+      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('ليس لديك بيرم ادمن :x:');
+             message.channel.overwritePermissions(message.guild.id, {
+             READ_MESSAGES: false
+ })
+              message.channel.send('تم اخفاء الشات ! :white_check_mark:  ')
+ }
+});
+
+
+client.on('message', message => {
+var prefix = "$";
+      if(message.content === prefix + "sc") {
+      if(!message.channel.guild) return;
+      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(':x:');
+             message.channel.overwritePermissions(message.guild.id, {
+             READ_MESSAGES: true
+ })
+              message.channel.send('تم فتح الشات  ')
+ }
+});
+ 
   client.on("message", message => {
 	var prefix = "$";
  if (message.content === "$help-py") {
@@ -392,8 +445,35 @@ client.on('message', msg => {
     msg.reply('السيرفر للمساعده,soon');
   }
 });
+
+  client.on ("message", (message) => {
+if (message.content.startsWith("$ban")) {//DarkLast Alpha Codes
+
+  if (message.channel.type !== "text") return message.reply ("This Command Only For Servers");
+  if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply ("You Dont Have **Ban Members** Premission");//DarkLast Alpha Codes
+  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have **Ban Members** Permission**");
+  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
+  let user = message.mentions.users.first();//DarkLast Alpha Codes
+  let reason = message.content.split(" ").slice(2).join(" ");//DarkLast Alpha Codes
+  if (!message.mentions.members.first()) return message.reply ("Mention Someone");
+  if (!message.guild.member(user).bannable) return message.reply("I Can't Ban Person His Rank Highter Than Me");//DarkLast Alpha Codes
+  if (!reason) return message.reply ("Write The Reason");//DarkLast Alpha Codes
+  message.mentions.members.first().ban();
+  message.guild.member(user).ban(7, user);//DarkLast Alpha Codes
+  
+  const banembed = new Discord.RichEmbed()
+  .setAuthor(`BANNED`, user.displayAvatarURL)//DarkLast Alpha Codes
+  .setColor("RANDOM")
+  .setThumbnail()//DarkLast Alpha Codes
+  .addField("**User Banned**", `**[ ${user.tag} ]**`)//DarkLast Alpha Codes
+  .addField("**Banned By**", `**[ ${message.author.tag} ]**`)
+  .addField("**For Reason**", `**[ ${reason} ]**`)//DarkLast Alpha Codes
+  .setFooter("LegendryBot")//DarkLast Alpha Codes
+  message.channel.send({embed : banembed})
+}
+  });
     client.on('message', message => {
-     if (message.content === "$id") {
+     if (message.content === "$id2") {
      let embed = new Discord.RichEmbed()
   .setThumbnail(message.author.avatarURL)  
   .setAuthor(message.author.username)
@@ -819,7 +899,44 @@ var fkk =[
 
    ];
 
+   client.on("message", async message => {
+	   var prefix = "$";
+    if(message.content == prefix+"فكك"){
+        if(UserBlocked.has(message.guild.id)) return message.channel.send("هناك جلسة .")
+        UserBlocked.add(message.guild.id)
+        var ask = fkk[Math.floor(Math.random() * fkk.length)];
+        let embed = new Discord.RichEmbed()
+        .setTitle('لعبة فكك')
+        .setAuthor(message.author.username, message.author.avatarURL)
+        .setColor("RANDOM")
+        .setDescription(ask.f);
+        message.channel.sendEmbed(embed).then(msg=> msg.delete(200000))
+        const msgs = await message.channel.awaitMessages(msg => msg.author.id !== client.user.id ,{maxMatches:1,time:100000});
+            UserBlocked.delete(message.guild.id)
+        msgs.forEach(result => {
+           if(result.author.id == client.user.id) return;
+           if(result.content == "فكك") return
+           if(result.content == ask.k){
 
+             let embeds = new Discord.RichEmbed()
+             .setTitle(':white_check_mark: اجابة صحيحة')
+             .setAuthor(message.author.username, message.author.avatarURL)
+             .setColor("RANDOM")
+             .setDescription(`**${result.author.username}** الإجابة صحيحة`);
+                message.channel.sendEmbed(embeds);                return;
+           } else {
+
+                               var embedx = new Discord.RichEmbed()
+             .setTitle(':x:خطاء')
+             .setAuthor(message.author.username, message.author.avatarURL)
+             .setColor("RANDOM")
+             .setDescription(`**${result.author.username}** الإجابة خاطئة`);
+
+                message.channel.sendEmbed(embedx);
+           }
+     });
+  }
+});
 
 
 const cuttweet = [     'كت تويت ‏| تخيّل لو أنك سترسم شيء وحيد فيصبح حقيقة، ماذا سترسم؟',     'كت تويت | أكثر شيء يُسكِت الطفل برأيك؟',     'كت تويت | الحرية لـ ... ؟',     'كت تويت | قناة الكرتون المفضلة في طفولتك؟',     'كت تويت ‏| كلمة للصُداع؟',     'كت تويت ‏| ما الشيء الذي يُفارقك؟',     'كت تويت ‏| ما الشيء الذي يُفارقك؟',     'كت تويت | ��وقف مميز فعلته مع شخص ولا يزال يذكره لك؟',     'كت تويت ‏| أيهما ينتصر، الكبرياء أم الحب؟',     'كت تويت | بعد ١٠ سنين ايش بتكون ؟',     'كت تويت ‏| مِن أغرب وأجمل الأسماء التي مرت عليك؟',     '‏كت تويت | عمرك شلت مصيبة عن ش��������ص برغبتك ؟',     'كت تويت | أكثر سؤال وجِّه إليك مؤخرًا؟',     '‏كت تويت | ما هو الشيء الذي يجعلك تشعر بالخوف؟',     '‏كت تويت | وش يفسد الصداقة؟',     '‏كت تويت | شخص لاترفض له طلبا ؟',     '‏كت تويت | كم مره خسرت شخص تحبه؟.',     '‏كت تويت | كيف تتعامل مع الاشخاص السلبيين ؟',     '‏كت تويت | كلمة تشعر بالخجل اذا قيلت لك؟',     '‏كت تويت | جسمك اكبر من عٌمرك او العكسّ ؟!',     '‏كت تويت |أقوى كذبة مشت عليك ؟',     '‏كت تويت | تتأثر بدموع شخص يبكي قدامك قبل تعرف السبب ؟',     'كت تويت | هل حدث وضحيت من أجل شخصٍ أحببت؟',     '‏كت تويت | أكثر تطبيق تستخدمه مؤخرًا؟',     '‏كت تويت | ‏اكثر شي يرضيك اذا زعلت بدون تفكير ؟',     '‏كت تويت | وش محتاج عشان تكون مبسوط ؟',     '‏كت تويت | مطلبك الوحيد الحين ؟',     '‏كت تويت | هل حدث وشعرت بأنك ارتكبت أحد الذنوب أثناء الصيام؟',];
