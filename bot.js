@@ -60,133 +60,57 @@ client.user.setStatus("dnd")
     
    }
    });
+client.on('message', message => {
+    if (message.content.startsWith("$avatar")) {
+        var mentionned = message.mentions.users.first();
+    var x5bzm;
+      if(mentionned){
+          var x5bzm = mentionned;
+      } else {
+          var x5bzm = message.author;
+          
+      }
+        const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setImage(`${x5bzm.avatarURL}`)
+      message.channel.sendEmbed(embed);
+    }
+});
 
 client.on('message', message => {
-    if(message.content == ('$profile')) {    
- 
-             if (message.channel.type === 'dm') return message.reply('This Command Is Not Avaible In Dm\'s :x:');   
-            var Canvas = module.require('canvas');
-            var jimp = module.require('jimp');
-    
-     const w = ['./ID1.png', './ID2.png', './ID3.png', './ID4.png', './ID5.png',];
-    
-             let Image = Canvas.Image,
-                 canvas = new Canvas(802, 404),
-                 ctx = canvas.getContext('2d');
-             ctx.patternQuality = 'bilinear';
-             ctx.filter = 'bilinear';
-             ctx.antialias = 'subpixel';
-             ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-             ctx.shadowOffsetY = 2;
-             ctx.shadowBlur = 2;
-             fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
-                 if (err) return console.log(err);
-                 let BG = Canvas.Image;
-                 let ground = new Image;
-                 ground.src = Background;
-                 ctx.drawImage(ground, 0, 0, 802, 404);
-    
-     })
-                                let user = message.mentions.users.first();
-          var men = message.mentions.users.first();
-             var heg;
-             if(men) {
-                 heg = men
-             } else {
-                 heg = message.author
-             }
-           var mentionned = message.mentions.members.first();
-              var h;
-             if(mentionned) {
-                 h = mentionned
-             } else {
-                 h = message.member
-             }
-             var ment = message.mentions.users.first();
-             var getvalueof;
-             if(ment) {
-               getvalueof = ment;
-             } else {
-               getvalueof = message.author;
-             }//ما خصك ,_,
-                                           let url = getvalueof.displayAvatarURL.endsWith(".webp") ? getvalueof.displayAvatarURL.slice(5, -20) + ".png" : getvalueof.displayAvatarURL;
-                                             jimp.read(url, (err, ava) => {
-                                                 if (err) return console.log(err);
-                                                 ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-                                                     if (err) return console.log(err);
-                            
-                                                                                           //Avatar
-                                                             let Avatar = Canvas.Image;
-                                                             let ava = new Avatar;
-                                                             ava.src = buf;
-                                                             ctx.beginPath();
-                                                           ctx.drawImage(ava, 320, 3, 160, 169);
-                                                                            //wl
-                                                     ctx.font = '35px Arial Bold';
-                                                     ctx.fontSize = '40px';
-                                                     ctx.fillStyle = "#dadada";
-                                                     ctx.textAlign = "center";
-                                                    
-                            
-                                                     ctx.font = '30px Arial Bold';//Name ,_,
-                                                     ctx.fontSize = '30px';
-                                                     ctx.fillStyle = "#ffffff";
-                                                                             ctx.fillText(`${getvalueof.username}`,655, 170);
-                                                                            
-                                                                        
-                                                          moment.locale('en-us');        
-                                            
-                                            
-                                                                    ctx.font = '30px Arial';
-                                                     ctx.fontSize = '30px';
-                                                     ctx.fillStyle = "#ffffff";
-                                                                             ctx.fillText(`${moment(h.joinedAt).fromNow()}`,150, 305);
-                                                              
-                                                              
-                                                                                                     ctx.font = '30px Arial';
-                                                     ctx.fontSize = '30px';
-                                                     ctx.fillStyle = "#ffffff";
-                                                                 ctx.fillText(`${moment(heg.createdTimestamp).fromNow()}`,150, 170); 
-                            
-                                                       let status;
-     if (getvalueof.presence.status === 'online') {
-         status = 'online';
-     } else if (getvalueof.presence.status === 'dnd') {
-         status = 'dnd';
-     } else if (getvalueof.presence.status === 'idle') {
-         status = 'idle';
-     } else if (getvalueof.presence.status === 'offline') {
-         status = 'offline';
-     }
-     
-     
-                                          ctx.cont = '35px Arial';
-                                          ctx.fontSize = '30px';
-                                          ctx.filleStyle = '#ffffff'
-                                          ctx.fillText(`${status}`,655,305)
-                  
-                                                                   ctx.font = 'regular 30px Cairo';
-                                                                   ctx.fontSize = '30px';
-                                                                   ctx.fillStyle = '#ffffff'
-                                                         ctx.fillText(`${h.presence.game === null ? "Don't Play" : h.presence.game.name}`,390,390);
-                            
-                               ctx.font = '35px Arial';
-                                                                   ctx.fontSize = '30px';
-                                                                   ctx.fillStyle = '#ffffff'
-                                                                   ctx.fillText(`#${heg.discriminator}`,390,260)
-                            
-                                 ctx.beginPath();
-                                 ctx.stroke();
-                               message.channel.sendFile(canvas.toBuffer());
-                            
-                            
-                          
-                            
-                             })
-                            
-                             })
- }
- });
+        if (message.author.id === client.user.id) return;
+        if (message.guild) {
+       let embed = new Discord.RichEmbed()
+        let args = message.content.split(' ').slice(1).join(' ');
+    if(message.content.split(' ')[0] == '$bc') {
+        if (!args[1]) {
+    message.channel.send("**$bc <message>**");
+    return;
+    }
+            message.guild.members.forEach(m => {
+       if(!message.member.hasPermission('ADMINISTRATOR')) return;
+                var bc = new Discord.RichEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL)
+                .addField('** الـسيرفر**', `${message.guild.name}`,true)
+                .addField(' **الـمرسل **', `${message.author.username}#${message.author.discriminator}`,true)
+                .addField(' **الرسالة** ', args)
+                .setThumbnail(message.guild.iconURL)
+                .setColor('RANDOM')
+                m.send(`${m}`,{embed: bc});
+            });
+            const AziRo = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)   
+            .setTitle('?? | جاري ارسال رسالتك ') 
+            .addBlankField(true)
+            .addField('?? | عدد الاعضاء المرسل لهم ', message.guild.memberCount , true)        
+            .addField('??| الرسالة ', args)
+            .setColor('RANDOM')  
+            message.channel.sendEmbed(AziRo);          
+        }
+        } else {
+            return;
+        }
+});
 
 client.on('message', message => {
 	var prefix = "$"
@@ -224,6 +148,107 @@ client.on('message', message => {
   })
 }
 });
+client.on('message' , message => {
+     if (message.content === "$servers") {
+
+if(!message.channel.guild) return;
+  if(message.content < 1023) return
+  const Embed11 = new Discord.RichEmbed()
+.setAuthor(client.user.username,client.user.avatarURL)
+.setThumbnail(client.user.avatarURL)
+.setDescription(`***مجموع السيرفرات ${client.guilds.size} \n \n${client.guilds.map(guilds => `- ${guilds.name}`).join('\n')}***`)
+         message.channel.sendEmbed(Embed11)
+    }
+});
+
+
+client.on('message', msg => {
+  if (msg.author.bot) return;
+  if (!msg.content.startsWith(prefix)) return;
+  let command = msg.content.split(" ")[0];
+  command = command.slice(prefix.length);
+  let args = msg.content.split(" ").slice(1);
+
+    if(command === "$clear") {
+        const emoji = client.emojis.find("name", "wastebasket")
+    let textxt = args.slice(0).join("");
+    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+    if (textxt == "") {
+        msg.delete().then
+    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها 👌```***").then(m => m.delete(3000));
+} else {
+    msg.delete().then
+    msg.delete().then
+    msg.channel.bulkDelete(textxt);
+        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
+        }    
+    }
+}
+});
+  
+
+client.on('message', async message => {
+var prefix = "$";
+  if(message.content.startsWith(prefix + "اقتراح")) {
+  await  message.channel.send(`اكتب اقتراحك الان`)
+    let filter = m => m.author.id === message.author.id
+      var text = '';
+        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
+          .then(co => {
+            text = co.first().content
+
+              message.channel.send(`تم حفظ اقتراحك الرجاء انتضار الرد من قبل الاداره`)
+                client.channels.get("471341711369437184").send(`${message.author.username}'s sug => ${text}`)
+
+              })
+            }
+          })
+  
+ 
+  client.on('message', message => {
+          
+
+           if (message.content.startsWith("$user")) {
+                     if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات ❌`);
+
+                message.guild.fetchInvites().then(invs => {
+      let member = client.guilds.get(message.guild.id).members.get(message.author.id);
+      let personalInvites = invs.filter(i => i.inviter.id === message.author.id);
+      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+      var moment = require('moment');
+      var args = message.content.split(" ").slice(1);
+let user = message.mentions.users.first();
+var men = message.mentions.users.first();
+ var heg;
+ if(men) {
+     heg = men
+ } else {
+     heg = message.author
+ }
+var mentionned = message.mentions.members.first();
+  var h;
+ if(mentionned) {
+     h = mentionned
+ } else {
+     h = message.member
+ }
+        moment.locale('ar-TN');
+      var id = new  Discord.RichEmbed()
+       
+    .setColor("#0a0909")
+ .setThumbnail(message.author.avatarURL)
+.addField(': تاريخ دخولك للديسكورد',` \`${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} \`**\n ${moment(heg.createdTimestamp).fromNow()}**` ,true) 
+.addField(': تاريخ دخولك لسيرفرنا', `\`${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')}  \` **\n ${moment(h.joinedAt).fromNow()} **`, true)
+
+.setFooter(message.author.username,'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')  
+    message.channel.sendEmbed(id);
+})
+}
+    
+
+         
+     });
+
 
   client.on("message", message => {
 	var prefix = "$";
@@ -238,6 +263,8 @@ client.on('message', message => {
 ❖$ban ➺  تبنيد العضو ⦁
 ❖$kick ➺   طرد عضو ⦁
 ❖$mute ➺   اسكات العضو ⦁
+❖$bc ➺   ارسال ساله للجميع ⦁
+❖$avatar ➺   صوره للشخص ⦁
 ❖$unmute ➺   فك اسكات العضو ⦁
 ❖$clear ➺   مسح الشات ⦁
 ❖$unmutechannel  ➺   فتح ➺    ⦁ الشات ⦁  
@@ -262,7 +289,7 @@ client.on('message', message => {
             .setAuthor(client.user.username,client.user.avatarURL)
             .setThumbnail(client.user.avatarURL)
             .setColor('Red')
-            .setTitle('``INFO Name Bot`` ')
+            .setTitle('``INFO Fox Bot`` ')
             .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
             .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
             .addField('``servers``', [client.guilds.size], true) 
