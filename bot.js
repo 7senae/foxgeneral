@@ -198,7 +198,7 @@ var prefix = "$";
             text = co.first().content
 
               message.channel.send(`تم حفظ اقتراحك الرجاء انتضار الرد من قبل الاداره`)
-                client.channels.get("471341711369437184").send(`${message.author.username}'s sug => ${text}`)
+                client.channels.get("414477438869831682").send(`${message.author.username}'s sug => ${text}`)
 
               })
             }
