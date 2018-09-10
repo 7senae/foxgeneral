@@ -31,12 +31,12 @@ client.on('ready', () => {
 });
 client.on('ready', () => {
    console.log(`----------------`);
-      console.log(`Desert Bot- Scrpit By ┃ ArabSupport`);
+      console.log(`Fox Bot- Scrpit By ┃ FoxBot`);
         console.log(`----------------`);
-      console.log(`ON ${client.guilds.size} Servers '     Bot By TEAM ArabSupport ' `);
+      console.log(`ON ${client.guilds.size} Servers '     Bot By TEAM FoxBot ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$kick || $inv `,"http://twitch.tv/S-F")
+client.user.setGame(`$help || $inv `,"http://twitch.tv/S-F")
 client.user.setStatus("dnd")
 });
 
@@ -148,19 +148,6 @@ client.on('message', message => {
   })
 }
 });
-client.on('message' , message => {
-     if (message.content === "$servers") {
-
-if(!message.channel.guild) return;
-  if(message.content < 1023) return
-  const Embed11 = new Discord.RichEmbed()
-.setAuthor(client.user.username,client.user.avatarURL)
-.setThumbnail(client.user.avatarURL)
-.setDescription(`***مجموع السيرفرات ${client.guilds.size} \n \n${client.guilds.map(guilds => `- ${guilds.name}`).join('\n')}***`)
-         message.channel.sendEmbed(Embed11)
-    }
-});
-
 
 client.on('message', msg => {
   if (msg.author.bot) return;
@@ -398,7 +385,6 @@ member.addRole(member.guild.roles.find('name', 'Member'));
 ❖$quas ~ اسئلة عامة
 ❖$نكت ~ نكت 
 ❖$لعبة فكك ~ فكك
-❖$عواصم عشوائية ~ عواصم
 ❖$لعبة التهكير ~ تهكير
 ❖$لعبة كت تويت ~ كت تويت
 ❖$لو خيروك بطريقة حلوة ~ لو خيروك
@@ -592,7 +578,7 @@ if (message.content.startsWith("$ban")) {//DarkLast Alpha Codes
   .addField("**User Banned**", `**[ ${user.tag} ]**`)//DarkLast Alpha Codes
   .addField("**Banned By**", `**[ ${message.author.tag} ]**`)
   .addField("**For Reason**", `**[ ${reason} ]**`)//DarkLast Alpha Codes
-  .setFooter("LegendryBot")//DarkLast Alpha Codes
+  .setFooter("FoxBot")//DarkLast Alpha Codes
   message.channel.send({embed : banembed})
 }
   });
@@ -958,7 +944,7 @@ client.on('message', message => {
             .addField('``My Name``' , `[ ${client.user.tag} ]` , true)
             .addField('``My ID``' , `[ ${client.user.id} ]` , true)
 			      .addField('``My Prefix``' , `[ $ ]` , true)
-			      .addField('``My Language``' , `[ Python ]` , true)
+			      .addField('``My Language``' , `[ Java Skript ]` , true)
 			      .setFooter('By | KillerFox')
     })
 }
@@ -1184,109 +1170,6 @@ client.on("message", (message) => {
         channel.delete()
     }
 });  
-
-   client.on("message", async message => {
-var prefix = "$";
-var aoasm =[
-    {q:"ما عاصمة **المغرب**",a:"الرباط"},
-    {q:"ما عاصمة **افغانستان**",a:"كبل"},
-    {q:"ما عاصمة ** البانيا**",a:"تيران"},
-    {q:"ما عاصمة **الجزائر **",a:"الجزائر"},
-    {q:"ما عاصمة ** **",a:"الجزائر"},
-    {q:"ما عاصمة **اندورا لا فيلا **",a:"اندورا"},
-    {q:"ما عاصمة **انجولا**",a:"لواندا"},
-    {q:"ما عاصمة **انتيجوا وباربودا**",a:"سان جونز"},
-    {q:"ما عاصمة **الارجنتين**",a:"بوينس ايرس"},
-    {q:"ما عاصمة **ارمينيا**",a:"يريفان"},
-    {q:"ما عاصمة ** مصر**",a:"القاهرة"},
-    {q:"ما عاصمة ** استراليا**",a:"كانبرا"},
-    {q:"ما عاصمة **النمسا**",a:"فيينا"},
-    {q:"ما عاصمة ** اذربيجان**",a:"باكو"},
-    {q:"ما عاصمة **جزر البهاما**",a:"ناساو"},
-    {q:"ما عاصمة **البحرين**",a:"المنامة"},
-    {q:"ما عاصمة ** بنجلاد��ش**",a:"دكـا"},
-    {q:"ما عاصمة **باربادوس **",a:"بريدجتاون"},
-    {q:"ما عاصمة **بيلا روسيا**",a:"مينسك"},
-    {q:"ما عاصمة ** بلجيكا**",a:"بروكسل"},
-    {q:"ما عاصمة ** بيليز**",a:"بلوم بان"},
-    {q:"ما عاصمة ** بنين**",a:"بورتو نوفو"},
-    {q:"ما عاصمة ** بوتان**",a:"ثيمفو"},
-    {q:"ما عاصمة **بوليفيا **",a:"لاباز"},
-    {q:"ما عاصمة ** البوسنة والهرسك**",a:"سراييفو"},
-    {q:"ما عاصمة ** بوتسوانا**",a:"جابورون"},
-    {q:"ما عاصمة ** البرازيل**",a:"برازيليا"},
-    {q:"ما عاصمة ** بروناى**",a:"بندر سرى بيجاوان"},
-    {q:"ما عاصمة ** بلغاريا**",a:"صوفيا"},
-    {q:"ما عاصمة ** بوركينا فاسو**",a:"واجادوجو"},
-    {q:"ما عاصمة **بوروندى **",a:"بوجومبورا"},
-    {q:"ما عاصمة **كمبوديا **",a:"بنوم بنـه"},
-    {q:"ما عاصمة ** الكاميرون**",a:"ياوندى"},
-    {q:"ما عاصمة ** كندا**",a:"اوتاوا"},
-    {q:"ما عاصمة ** الرأس الاخضر**",a:"برايا"},
-    {q:"ما عاصمة **تشاد **",a:"نجامينا"},
-    {q:"ما عاصمة ** شيلى**",a:"سانتياجو"},
-    {q:"ما عاصمة **الصين **",a:"بكين"},
-    {q:"ما عاصمة ** **",a:"مورونى"},
-    {q:"ما عاصمة **كوستاريكا **",a:"سان خوسيه"},
-    {q:"ما عاصمة ** كوت ديفوار**",a:"ابيدجان"},
-    {q:"ما عاصمة **كرواتيا **",a:"زغرب"},
-    {q:"ما عاصمة ** كوبا**",a:"هافانا"},
-    {q:"ما عاصمة ** قبرص**",a:" "},
-    {q:"ما عاصمة ** جمهورية التشيك**",a:"براغ"},
-    {q:"ما عاصمة **الدنمارك **",a:"كوبنهاجن"},
-    {q:"ما عاصمة ** جيبوتى**",a:"جيبوتى"},
-    {q:"ما عاصمة ** دومينيكا**",a:"روسيو"},
-    {q:"ما عاصمة **الدومينيكان **",a:"سان دومينجو"},
-    {q:"ما عاصمة **تيمور الشرقية **",a:"ديلى"},
-    {q:"ما عاصمة **قطر  **",a:"الدوحة"},
-    {q:"ما عاصمة **السعودية  **",a:"الرياض"},
-    {q:"ما عاصمة **سوريا  **",a:"دمشق"},
-    {q:"ما عاصمة **تركيا  **",a:"انقرة"},
-    {q:"ما عاصمة **العراق  **",a:"بغداد"},
-    {q:"ما عاصمة **البنان  **",a:"بيروت"},
-    {q:"ما عاصمة **فلسطين  **",a:"القدس"},
-    {q:"ما عاصمة **امريكا  **",a:"واشنطن"},
-    {q:"ما عاصمة **الاردن  **",a:"عمان"},    
-    {q:"ما عاصمة **السودان  **",a:"خرطوم"},
-    {q:"ما عاصمة **الما��يا  **",a:"برلين"},
-    {q:"ما عاصمة **كندا  **",a:"اوتاوا"},
-    {q:"ما عاصمة **البرازيل  **",a:"برازيليا"},
-   ];
-    if(message.content == prefix+"عواصم"){
-        if(UserBlocked.has(message.guild.id)) return message.channel.send("هناك جلسة .")
-        UserBlocked.add(message.guild.id)
-        var ask = aoasm[Math.floor(Math.random() * aoasm.length)];
-        let embed = new Discord.RichEmbed()
-        .setTitle('سؤال عواصم')
-        .setAuthor(message.author.username, message.author.avatarURL)
-        .setColor("RANDOM")
-        .setDescription(ask.q);
-        message.channel.sendEmbed(embed).then(msg=> msg.delete(20000))
-        const msgs = await message.channel.awaitMessages(msg => msg.author.id !== client.user.id ,{maxMatches:1,time:10000});
-            UserBlocked.delete(message.guild.id)
-        msgs.forEach(result => {
-           if(result.author.id == client.user.id) return;
-           if(result.content == "عاصمة") return
-           if(result.content == ask.a){
-             let embeds = new Discord.RichEmbed()
-             .setTitle(':white_check_mark: اجابة صحيحة')
-             .setAuthor(message.author.username, message.author.avatarURL)
-             .setColor("RANDOM")
-             .setDescription(`**${result.author.username}** الإجابة صحيحة`);
-                message.channel.sendEmbed(embeds);                return;
-           } else {
-
-                                  var embedx = new Discord.RichEmbed()
-                .setTitle(':x:خطاء')
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setColor("RANDOM")
-                .setDescription(`**${result.author.username}** الإجابة خاطئة`);
-                message.channel.sendEmbed(embedx);
-           }
-     });
-  }
-});
-
 client.on('message', message => {
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
@@ -1300,34 +1183,6 @@ m.sendMessage(args)
 }
 });
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
-
- client.on('message', message => {
-	 var prefix ="$";
- if(message.content.startsWith(prefix +"server")){
-if(!message.channel.guild) return message.reply(' ');
-const millis = new Date().getTime() - message.guild.createdAt.getTime();
-const now = new Date();
-dateFormat(now, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
-const verificationLevels = ['None', 'Low', 'Medium', 'Insane', 'Extreme'];
-const days = millis / 1000 / 60 / 60 / 24;
-let roles = client.guilds.get(message.guild.id).roles.map(r => r.name);
-var embed  = new Discord.RichEmbed()
-.setAuthor(message.guild.name, message.guild.iconURL)
-.addField("**🆔 Server ID:**", message.guild.id,true)
-.addField("**📅 Created On**", message.guild.createdAt.toLocaleString(),true)
-.addField("**👑 Owned by**",`${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
-.addField("👥 Members ",`[${message.guild.memberCount}]`,true)
-.addField('**💬 Channels **',`**${message.guild.channels.filter(m => m.type === 'text').size}**` + ' text | Voice  '+ `**${message.guild.channels.filter(m => m.type === 'voice').size}** `,true)
-.addField("**🌍 Others **" , message.guild.region,true)
-.addField("** 🔐 Roles **",`**[${message.guild.roles.size}]** Role `,true)
-.setColor('RANDOM')
-message.channel.sendEmbed(embed)
-
-}
-});
 
 client.on('message', message => {
     if (message.content == "$quas") {
