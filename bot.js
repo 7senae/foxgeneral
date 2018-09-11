@@ -194,10 +194,10 @@ client.on('message', msg => {
 ❖$mutechannel  ➺   قفل الشات ⦁
 ❖$hc  ➺   اخفاء الشات ⦁
 ❖$sc  ➺   الغاء اخفاء الشات ⦁
-❖$invite ➺   دعوه لمده يوم100 عضو ⦁
+❖$bot  ➺   معرفه عن البوت تفاصيل ⦁
+❖$date  ➺   تاريخ ⦁
 ❖$cc ➺   انشاء شات ⦁
 ❖$cv ➺   انشاء روم صوتي ⦁
-❖$support ➺   سيرفر المساعده ⦁
 ❖$inv ➺   دعوة البوت ⦁
 ─═════════ {✯FoxBot✯} ════════════─
 	  ** `)
@@ -551,7 +551,7 @@ client.on('message', message => {
     }
 });
 client.on('message', msg => {
-  if (msg.content === '$suppport') {
+  if (msg.content === '$support') {
     msg.reply('السيرفر للمساعده,soon');
   }
 });
