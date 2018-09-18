@@ -39,6 +39,131 @@ client.on('ready', () => {
 client.user.setGame(`$help || $inv `,"http://twitch.tv/S-F")
 client.user.setStatus("dnd")
 });
+/////////////////////////////////////////////////////////
+
+//Warn
+client.on('message', msg => {
+        if (msg.content.startsWith(`$warn`)) {
+          if(!msg.member.hasPermission("MANAGE_MESSAGES")) return;
+           let args = msg.content.split(" ").slice(1);
+          if (!msg.mentions.members.first()) return msg.reply('منشن الشخص المحدد')
+          if (!args[1]) return msg.reply('``اكتب السبب``')
+          //غير اسم الروم او سوي روم بذا الاسم
+          if (msg.guild.channels.find('name', 'warns')) {
+            //اذا غيرت فوق غير هنا كمان
+            msg.guild.channels.find('name', 'warns').send(`
+          تم اعطائك تنبيه : ${msg.mentions.members.first()}
+          لأنك قمت بما يلي
+          ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
+          `)
+          }
+        }
+})
+/////////////////////////////////////////////////////////
+
+//BanList
+  client.on('message', message => {
+     if(message.content.startsWith("$banlist")) {
+        message.guild.fetchBans()
+        .then(bans => message.channel.send(`The ban count **${bans.size}** Person`))
+  .catch(console.error);
+}
+});
+/////////////////////////////////////////////////////////
+
+//No Sharing Discord Servers
+client.on('message', message => {
+    if(message.content.includes('discord.gg')){
+                                            if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
+        if (!message.member.hasPermissions(['ADMINISTRATOR'])){
+        message.delete()
+    return message.reply(`** No Invite Links :angry: !**`)
+    }
+}
+});
+
+
+        client.on('message', async message => {
+            if(message.content.includes('discord.gg')){
+                if(message.member.hasPermission("MANAGE_GUILD")) return;
+        if(!message.channel.guild) return;
+        message.delete()
+          var command = message.content.split(" ")[0];
+    let muterole = message.guild.roles.find(`name`, "Muted");
+    if(!muterole){
+      try{
+        muterole = await message.guild.createRole({
+          name: "Muted",
+          color: "#000000",
+          permissions:[]
+        })
+        message.guild.channels.forEach(async (channel, id) => {
+          await channel.overwritePermissions(muterole, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false
+          });
+        });
+      }catch(e){
+        console.log(e.stack);
+      }
+    }
+           if(!message.channel.guild) return message.reply('** This command only for servers**');
+     message.member.addRole(muterole);
+    const embed500 = new Discord.RichEmbed()
+.setDescription(`**  🔒 لقد تمت معاقبتك  **
+**  بسبب نشر الروابط خيو 😏 🐸 **
+`)
+            .setColor("RANDOM")
+            .setThumbnail(`${message.author.avatarURL}`)
+            .setAuthor(message.author.username, message.author.avatarURL)
+        .setFooter(`${message.guild.name} `)
+     message.channel.send(embed500)
+
+
+    }
+})
+/////////////////////////////////////////////////////////
+
+//Report
+client.on('message', function(message) {
+    if(message.content.startsWith("$report")) {
+        let messageArgs = message.content.split(" ").slice(1).join(" ");
+        let messageReason = message.content.split(" ").slice(2).join(" ");
+        if(!messageReason) return message.reply("**# Specify a reason!**");
+    let mUser = message.mentions.users.first();
+    if(!mUser) return message.channel.send("Couldn't find user.");
+    let Rembed = new Discord.RichEmbed()
+    .setTitle("`New Report!`")
+    .setThumbnail(message.author.avatarURL)
+    .addField("**# - Reported User:**",mUser,true)
+    .addField("**# - Reported User ID:**",mUser.id,true)
+    .addField("**# - Reason:**",messageReason,true)
+    .addField("**# - Channel:**",message.channel,true)
+    .addField("**# - Time:**",message.createdAt,true)
+    .setFooter("لو ان الابلاغ فيه مزح راح يتعرض صاحب الابلاغ لقوبات")
+message.channel.send(Rembed)
+message.channel.send("__Are you sure you want to send this to the Server owner??__").then(msg => {
+    msg.react("✅")
+    msg.react("❌")
+.then(() => msg.react('❌'))
+.then(() =>msg.react('✅'))
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+reaction1.on("collect", r => {
+    message.guild.owner.send(Rembed)
+    message.reply("**# - Done! 🎇**");
+})
+reaction2.on("collect", r => {
+    message.reply("**# - Canceled!**");
+})
+})
+}
+});
+/////////////////////////////////////////////////////////
+
 
   client.on("message", message => {
 	var prefix = "$";
@@ -110,6 +235,70 @@ client.on('message', message => {
         } else {
             return;
         }
+});
+//Servers & Ping
+client.on('message', message => {
+     if (message.content === ".servers") {
+		 if(!message.channel.guild) return;
+     let embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .addField("**Servers: **" , client.guilds.size)
+  message.channel.sendEmbed(embed);
+    }
+});
+
+
+
+
+
+
+
+
+
+client.on('message', message => {
+     if (message.content === ".ping") {
+      const embed = new Discord.RichEmbed()
+
+  .setColor("#FF0000")
+  .addField('``سرعة أتصال الــبوت`` ' , `${Date.now() - message.createdTimestamp}` + ' ms`')
+                 .setFooter(` FoxBot
+ .`, 'https://cdn.discordapp.com/avatars/460797113643696129/73410b8835141d12fc8b48cdb27986f0.png?size=2048')
+
+  message.channel.sendEmbed(embed);
+    }
+});
+/////////////////////////////////////////////////////////
+
+
+var cats = [
+
+"https://static.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg",
+"https://www.petfinder.com/wp-content/uploads/2012/11/101438745-cat-conjunctivitis-causes.jpg",
+"http://www.i-love-cats.com/images/2015/04/12/cat-wallpaper-38.jpg",
+"https://www.aspca.org/sites/default/files/cat-care_urine-marking_main-image.jpg",
+"https://vignette1.wikia.nocookie.net/houseofnight/images/8/8b/Cats.jpg/revision/latest?cb=20130812053537",
+"https://s-media-cache-ak0.pinimg.com/originals/f0/3b/76/f03b7614dfadbbe4c2e8f88b69d12e04.jpg",
+"http://www.rd.com/wp-content/uploads/sites/2/2016/04/15-cat-wants-to-tell-you-attention.jpg"
+]
+    client.on('message', message => {
+        var args = message.content.split(" ").slice(1);
+    if(message.content.startsWith('$cats')) {
+         var cat = new Discord.RichEmbed()
+.setImage(`cats[Math.floor(Math.random() * cats.length)]`)
+message.channel.sendEmbed(cat);
+    }
+});
+
+//Roles
+client.on('message', message => {
+    if (message.content === "$roles") {
+		if(!message.channel.guild) return;
+        var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
+        const embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .addField('Roles:',`**[${roles}]**`)
+        message.channel.sendEmbed(embed);
+    }
 });
 
 client.on('message', message => {
@@ -294,7 +483,7 @@ client.on('guildMemberAdd', member => {
     .setDescription(`اهلا بك في السيرفر`)
     .addField(' :bust_in_silhouette:  انت رقم',`**[ ${member.guild.memberCount} ]**`,true)
     .setColor('GREEN')
-    .setFooter('Fox Bot', 'https://cdn.discordapp.com/icons/390551815072251904/418fa2788d8115808951c9881ba8f190.jpg')
+    .setFooter('Fox Bot', 'https://cdn.discordapp.com/avatars/460797113643696129/73410b8835141d12fc8b48cdb27986f0.png?size=2048')
 
 var channel =member.guild.channels.find('name', 'wlc')
 if (!channel) return;
@@ -309,7 +498,7 @@ client.on('guildMemberRemove', member => {
     .setDescription(`الى اللقاء...`)
     .addField(':bust_in_silhouette:   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
     .setColor('RED')
-    .setFooter(`Fox Bot`, '')
+    .setFooter(`Fox Bot`, 'https://cdn.discordapp.com/avatars/460797113643696129/73410b8835141d12fc8b48cdb27986f0.png?size=2048')
 
 var channel =member.guild.channels.find('name', 'wlc')
 if (!channel) return;
@@ -345,6 +534,8 @@ channel.send({embed : embed});
 تم انهاء كل الاوامر اتمنى تستمتعوا بالبوت
 ─═════════ {✯FoxBot✯} ════════════─
 	  ** `)
+      .setFooter(`Fox Bot`, 'https://cdn.discordapp.com/avatars/460797113643696129/73410b8835141d12fc8b48cdb27986f0.png?size=2048')
+  
    message.channel.sendEmbed(embed)
     
    }
