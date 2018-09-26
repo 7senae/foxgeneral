@@ -630,7 +630,7 @@ client.on('message',async message => {
   });
 
   client.on('message',async message => {
-    if(message.content.startsWith(prefix + "$setC")) {
+    if(message.content.startsWith(prefix + "setC")) {
     if(message.author.bot) return;
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
     if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات ال��افية**');
@@ -650,7 +650,7 @@ client.on('message',async message => {
 
     
   client.on('message',async message => {
-    if(message.content.startsWith(prefix + "$setT")) {
+    if(message.content.startsWith(prefix + "setT")) {
     if(message.author.bot) return;
     if(!message.guild.member(message.author).hasPermission('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
     if(!message.guild.member(client.user).hasPermission(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
@@ -693,7 +693,7 @@ client.on('message',async message => {
 
   
   client.on('message',async message => {
-    if(message.content.startsWith(prefix + "$setD")) {
+    if(message.content.startsWith(prefix + "setD")) {
         var currentTime = new Date(),
         years = currentTime.getFullYear(),
         month = currentTime.getMonth() + 1,
