@@ -483,6 +483,9 @@ client.on('message', msg => {
 ❖$bc ➺   ارسال ساله للجميع ⦁
 ❖$avatar ➺   صوره للشخص ⦁
 ❖$unmute ➺   فك اسكات العضو ⦁
+❖$ont ➺  فتح تذكره ⦁
+❖$offt ➺  اقفال  تذكره ⦁
+❖$Time ➺  وقت البوت ⦁
 ❖$clear ➺   مسح الشات ⦁
 ❖$unmutechannel  ➺   فتح ➺    ⦁ الشات ⦁  
 ❖$mutechannel  ➺   قفل الشات ⦁
@@ -490,9 +493,14 @@ client.on('message', msg => {
 ❖$sc  ➺   الغاء اخفاء الشات ⦁
 ❖$bot  ➺   معرفه عن البوت تفاصيل ⦁
 ❖$date  ➺   تاريخ ⦁
-❖$cc ➺   انشاء شات ⦁
+❖$cc ➺  انشاء شات ⦁
 ❖$cv ➺   انشاء روم صوتي ⦁
 ❖$inv ➺   دعوة البوت ⦁
+❖$setV ➺  روم عدد رومات الصوتيه ⦁
+❖$setC ➺  روم صوتي  ⦁
+❖$setD ➺  اضفات  روم موجود في التاريخ ⦁
+❖$setT ➺  اضافات روم موجود فيه الوقت  ⦁
+❖$sug ➺  لاضافت اقتراح ⦁
 ─═════════ {✯FoxBot✯} ════════════─
 	  ** `)
    message.channel.sendEmbed(embed)
@@ -666,34 +674,34 @@ client.on('guildMemberAdd', (member) => {
 member.addRole(member.guild.roles.find('name', 'Member'));
 });
 
-   
-
-   client.on("message", message => {
+  client.on("message", message => {
 	var prefix = "$";
  if (message.content === "$help-1") {
-	  message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
-  const embed = new Discord.RichEmbed() 
-      .setColor("#000000")
+  const embed = new Discord.RichEmbed()  
+      .setColor("RANDOM") 
       .setDescription(` **
+	  
+	    Please Chose: 
 
 ─═════════ {✯FoxBot✯} ════════════─
           اوامر الالعاب
-❖$quas ~ اسئلة عامة
-❖$نكت ~ نكت 
-❖$لعبة فكك ~ فكك
-❖$لعبة التهكير ~ تهكير
-❖$لعبة كت تويت ~ كت تويت
-❖$لو خيروك بطريقة حلوة ~ لو خيروك
-❖$لعبة مريم ~ مريم
-❖$فوائد ونصائح  ~ هل تعلم
-❖$يعطيك عقابات قاسية ~ عقاب   
+❖$quas ➺  اسئلة عامة
+❖$نكت  ➺  نكت
+❖$لعبة فكك  ➺  فكك
+❖$لعبة التهكير ➺  تهكير
+❖$لعبة كت تويت ➺  كت تويت
+❖$لو خيروك بطريقة حلوة ➺  لو خيروك
+❖$لعبة مريم ➺  مريم
+❖$فوائد ونصائح ➺  هل تعلم
+❖$تحديات قاسيه ➺  اتحداك   
 ─═════════ {✯FoxBot✯} ════════════─
 
-** `)
-   message.author.sendEmbed(embed)
+	  ** `)
+   message.channel.sendEmbed(embed)
     
    }
    }); 
+   
    
   client.on("message", message => {
 	var prefix = "$";
@@ -1310,7 +1318,7 @@ var Za7f = [
 ];
 
 client.on('message', message => {
- if (message.content.startsWith("$عقاب")) {
+ if (message.content.startsWith("$اتحداك")) {
               if(!message.channel.guild) return message.reply('** This command only for servers**');
 var embed = new Discord.RichEmbed()
 .setColor('RANDOM')
@@ -1520,7 +1528,7 @@ const cuttweet = [     'كت تويت ‏| تخيّل لو أنك سترسم ش�
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
    .setThumbnail(message.author.avatarURL) 
- .addField('Speed bot' ,
+ .addField('كت تويت By Fox' ,
   `${cuttweet[Math.floor(Math.random() * cuttweet.length)]}`)
   message.channel.sendEmbed(embed);
   console.log('[id] Send By: ' + message.author.username)
@@ -1569,20 +1577,26 @@ client.on('message', message => {
                m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓ ] 1%').setColor(0xFF0000)})
              }, 1000)
             setTimeout(function() {
-               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓] 25%').setColor(0xFF0000)})
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓ ] 25%').setColor(0xFF0000)})
              }, 2000)
            setTimeout(function() {     
-               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 100%').setColor(0xFF0000)})
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓ ] 50%').setColor(0xFF0000)})
              }, 3000)
+           setTimeout(function() {     
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓ ] 75%').setColor(0xFF0000)})
+             }, 4000)
+           setTimeout(function() {     
+               m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 100%').setColor(0xFF0000)})
+             }, 5000)
                 setTimeout(function() {
                m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Uploaded! Initiating explosion in 1...').setColor(0xFF0000)})
-             }, 4000)
+             }, 6000)
               setTimeout(function() {
                m.delete()
-           }, 5000)
+           }, 7000)
              setTimeout(function() {
-               message.channel.send('تم تهكير بنجاح')
-           }, 6000)
+               message.channel.send('[${member}] تم تهكير بنجاح ')
+           }, 8000)
            });
          }
  });
