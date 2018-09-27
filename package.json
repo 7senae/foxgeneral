@@ -6,6 +6,7 @@
   "dependencies": {
     "node": "8.x",
     "discord.js": "^11.3.2",
+    "fs": "0.0.2",
     "ffmpeg": "^0.0.4",
     "ffmpeg-binaries": "^4.0.0",
     "get-youtube-id": "^1.0.0",
