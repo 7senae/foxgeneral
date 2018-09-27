@@ -1595,7 +1595,7 @@ client.on('message', message => {
                m.delete()
            }, 7000)
              setTimeout(function() {
-               message.channel.send('[${member}] تم تهكير بنجاح ')
+               message.channel.send('`[${member}]` تم تهكير بنجاح ')
            }, 8000)
            });
          }
