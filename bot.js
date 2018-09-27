@@ -44,7 +44,7 @@ client.on("message", (message) => {
     /// ALPHA CODES
    if (message.content.startsWith("$ont")) {     /// ALPHA CODES
         const reason = message.content.split(" ").slice(1).join(" ");     /// ALPHA CODES
-        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`اخي يرجا تسوي رتبه \`Support Team\` اذا انتهمن اداره تجيك دي.`);
         if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
         message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
             let role = message.guild.roles.find("name", "Support Team");
@@ -64,7 +64,7 @@ client.on("message", (message) => {
             message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
             const embed = new Discord.RichEmbed()
                 .setColor(0xCF40FA)
-                .addField(`Hey ${message.author.username}!`, `اخي يرجا تسوي رتبه اسمها **Support Team** .`)
+                .addField(`Hey ${message.author.username}!`, `سوف يتم مساعدتك  **Support Team** اتمنه يفيدك الدعم .`)
                 .setTimestamp();
             c.send({
                 embed: embed
@@ -74,7 +74,7 @@ client.on("message", (message) => {
  
  
   if (message.content.startsWith("$offt")) {
-        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`تم انشاء التذكره.`);
+        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`تبي حذف الروم اكد \`$confirm\`. لديك 10 ثواني`);
  
        message.channel.send(`تبي حذف الروم اكد \`$confirm\`. لديك 10 ثواني .`)
            .then((m) => {
