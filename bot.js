@@ -48,11 +48,11 @@ client.on('message', message => {
   .setAuthor(client.user.username,client.user.avatarURL)
   .setThumbnail(client.user.avatarURL)
   .setTitle("**_+_+_INFO_+_+_**")
-  .addField("**Type Server: **" , msg.guild.region)
-  .addField("**Ranks: **" , msg.guild.roles.size)
-  .addField("**Members: **" , msg.guilds.memberCount)
-  .addField("**Owner Ship:**" , msg.guild.owner)
-  .addField("**id server:**" , msg.guild.id)
+  .addField("**Type Server: **" , ${msg.guild.region})
+  .addField("**Ranks: **" , ${msg.guild.roles.size})
+  .addField("**Members: **" , ${msg.guilds.memberCount})
+  .addField("**Owner Ship:**" , ${msg.guild.owner})
+  .addField("**id server:**" , ${msg.guild.id})
   .setImage('FoxBot' , "https://cdn.discordapp.com/attachments/371269161470525444/384103927060234242/125.png")
   message.channel.sendEmbed(embed);
     }
