@@ -47,7 +47,7 @@ client.on('message', message => {
   .setColor("RED")
   .setAuthor(client.user.username,client.user.avatarURL)
   .setThumbnail(client.user.avatarURL)
-  .setTitle("**name server:**" , msg.guild.name)
+  .setTitle("**_+_+_INFO_+_+_**")
   .addField("**Type Server: **" , msg.guild.region)
   .addField("**Ranks: **" , msg.guild.roles.size)
   .addField("**Members: **" , msg.guilds.memberCount)
