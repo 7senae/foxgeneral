@@ -40,11 +40,13 @@ client.user.setGame(`$help || $inv `,"http://twitch.tv/S-F")
 client.user.setStatus("dnd")
 });
 
-client.on('message', message => {
-     if (message.content === "$info") {
-		 if(!message.channel.guild) return;
+client.on('message', msg => {
+     if (msg.content === "$info") {
+         if(!msg.channel.guild) return;
      let embed = new Discord.RichEmbed()
   .setColor("RED")
+  .setAuthor(client.user.username,client.user.avatarURL)
+  .setThumbnail(client.user.avatarURL)
   .setTitle("**_+_+_INFO_+_+_**")
   .addField("**Ranks: **" , `${msg.guild.roles.size}`,true)
   .addField("**Members: **" , `${msg.guilds.memberCount}`,true)
@@ -54,9 +56,11 @@ client.on('message', message => {
   .addField("**Owner Ship:**" , `${msg.guild.owner}`,true)
   .addField("**id server:**" , `${msg.guild.id}`,true)
   .setImage('FoxBot' , "https://cdn.discordapp.com/attachments/371269161470525444/384103927060234242/125.png")
-  message.channel.sendEmbed(embed);
+  msg.channel.sendEmbed(embed);
     }
 });
+
+
 
 client.on("message", (message) => {
     /// ALPHA CODES
