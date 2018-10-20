@@ -46,12 +46,13 @@ client.on('message', message => {
      let embed = new Discord.RichEmbed()
   .setColor("RED")
   .setThumbnail(msg.guild.iconURL)
-  .setTitle("**name server:**"  {msg.guild.name})
+  .setTitle("**name server:**" , msg.guild.name)
   .addField("**Type Server: **" , msg.guild.region)
   .addField("**Ranks: **" , msg.guild.roles.size)
   .addField("**Members: **" , msg.guilds.memberCount)
   .addField("**Owner Ship:**" , msg.guild.owner)
   .addField("**id server:**" , msg.guild.id)
+  .setImage('FoxBot' , "https://cdn.discordapp.com/attachments/371269161470525444/384103927060234242/125.png")
   message.channel.sendEmbed(embed);
     }
 });
