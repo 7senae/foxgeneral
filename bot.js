@@ -53,7 +53,6 @@ client.on('message', message => {
   .addField("**Members online:**" , msg.guild.members.filter(m=>m.presence.status == 'online').size)
   .addField("**Owner Ship:**" , msg.guild.owner)
   .addField("**id server:**" , msg.guild.id)
-  .setImage("FoxBot" , "https://cdn.discordapp.com/attachments/371269161470525444/384103927060234242/125.png")
   message.channel.sendEmbed(embed);
     }
 });
