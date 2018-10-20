@@ -49,7 +49,7 @@ client.on('message', msg => {
   .setThumbnail(client.user.avatarURL)
   .setTitle("**_+_+_INFO_+_+_**")
   .addField("**Ranks: **" , `${msg.guild.roles.size}`,true)
-  .addField("**Members: **" , `${msg.guilds.memberCount}`,true)
+  .addField("**Members: **" , `${msg.guild.memberCount}`,true)
   .addField("**Members online**",`${msg.guild.members.filter(m=>m.presence.status == 'online').size}`,true)
   .addField("**Rooms Text**",`${msg.guild.channels.filter(m => m.type === 'text').size}`,true)
   .addField("**Rooms Voice**",`${msg.guild.channels.filter(m => m.type === 'voice').size}`,true)
