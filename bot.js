@@ -45,8 +45,6 @@ client.on('message', message => {
 		 if(!message.channel.guild) return;
      let embed = new Discord.RichEmbed()
   .setColor("RED")
-  .setAuthor(client.user.username,client.user.avatarURL)
-  .setThumbnail(client.user.avatarURL)
   .setTitle("**_+_+_INFO_+_+_**")
   .addField("**Ranks: **" , `${msg.guild.roles.size}`,true)
   .addField("**Members: **" , `${msg.guilds.memberCount}`,true)
