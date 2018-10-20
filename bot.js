@@ -50,7 +50,6 @@ client.on('message', message => {
   .addField("**Type Server: **" , msg.guild.region)
   .addField("**Ranks: **" , msg.guild.roles.size)
   .addField("**Members: **" , msg.guilds.memberCount)
-  .addField("**Members online:**" , msg.guild.members.filter(m=>m.presence.status == 'online').size)
   .addField("**Owner Ship:**" , msg.guild.owner)
   .addField("**id server:**" , msg.guild.id)
   message.channel.sendEmbed(embed);
