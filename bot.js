@@ -48,11 +48,13 @@ client.on('message', message => {
   .setAuthor(client.user.username,client.user.avatarURL)
   .setThumbnail(client.user.avatarURL)
   .setTitle("**_+_+_INFO_+_+_**")
-  .addField("**Type Server: **" , `$msg.guild.region`,true )
-  .addField("**Ranks: **" , `$msg.guild.roles.size`,true)
-  .addField("**Members: **" , `$msg.guilds.memberCount`,true)
-  .addField("**Owner Ship:**" , `$msg.guild.owner`,true)
-  .addField("**id server:**" , `$msg.guild.id`,true)
+  .addField("**Ranks: **" , `${msg.guild.roles.size}`,true)
+  .addField("**Members: **" , `${msg.guilds.memberCount}`,true)
+  .addField("**Members online**",`${msg.guild.members.filter(m=>m.presence.status == 'online').size}`,true)
+  .addField("**Rooms Text**",`${msg.guild.channels.filter(m => m.type === 'text').size}`,true)
+  .addField("**Rooms Voice**",`${msg.guild.channels.filter(m => m.type === 'voice').size}`,true)
+  .addField("**Owner Ship:**" , `${msg.guild.owner}`,true)
+  .addField("**id server:**" , `${msg.guild.id}`,true)
   .setImage('FoxBot' , "https://cdn.discordapp.com/attachments/371269161470525444/384103927060234242/125.png")
   message.channel.sendEmbed(embed);
     }
