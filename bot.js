@@ -217,8 +217,6 @@ client.on('message', message => {
 ❖ $setD ➾ انشاء روم صوتي فيه تاريخ
 ❖ $Onc ➾ فتح الشات
 ❖ $Offc ➾ اغلاق الشات
-❖ $ct ➾ انشاء روم كتابي
-❖ $cv ➾ انشاء روم صوتي
 ❖ $date ➾ تاريخ 
 
 ❖❖❖❖❖❖❖❖❖ FOX GENERAL ❖❖❖❖❖❖❖❖❖
@@ -229,11 +227,11 @@ Wlc
 وتبي تساعدنا في نشر البوت
 رابط موجود  وسيرفر الدعم
 ويوجد نشر في مقابل بسيط  في البوت 
-==================================================================
+============================
 Server support: https://discord.gg/REKnChB
-==================================================================
+============================
 bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=528122045758832640&permissions=8&scope=bot
-==================================================================
+============================
 ─═════════ {✯FoxBots✯} ════════════─
 	  ** `)
    message.channel.sendEmbed(embed)
@@ -832,27 +830,6 @@ client.on('message', message => {
      message.channel.sendEmbed(embed);
        }
    });
-
-client.on("message", (message) => {
-if (message.content.startsWith("$ct")) {
-            if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
-        let args = message.content.split(" ").slice(1);
-    message.guild.createChannel(args.join(' '), 'text');
-message.channel.sendMessage('تـم إنـشاء روم كـتابـي')
-
-}
-});
-
-
-client.on("message", (message) => {
-if (message.content.startsWith("$cv")) {
-            if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
-        let args = message.content.split(" ").slice(1);
-    message.guild.createChannel(args.join(' '), 'voice');
-    message.channel.sendMessage('تـم إنـشاء روم صـوتي')
-    
-}
-});
 
 
 
